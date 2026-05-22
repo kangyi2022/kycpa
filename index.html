@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>CPA复习导航站 | 六科笔记整合</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f1f5f9;
+            font-family: 'Segoe UI', Roboto, 'Noto Sans', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+            line-height: 1.5;
+            color: #0f2b3d;
+        }
+        /* 顶栏 */
+        .cpa-header {
+            background: #0f2b3d;
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .logo span {
+            color: #ffb347;
+        }
+        .subject-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .subject-btn {
+            background: rgba(255,255,255,0.12);
+            border: none;
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.9rem;
+        }
+        .subject-btn.active {
+            background: #ffb347;
+            color: #1e2a3a;
+        }
+        .subject-btn:hover {
+            background: #ffb347;
+            color: #1e2a3a;
+        }
+        /* 主体双栏 */
+        .review-layout {
+            max-width: 1600px;
+            margin: 1.5rem auto;
+            padding: 0 1.5rem;
+            display: flex;
+            gap: 1.8rem;
+        }
+        /* 左侧章节侧栏 */
+        .chapter-sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            padding: 1.5rem 1rem;
+            position: sticky;
+            top: 85px;
+            align-self: flex-start;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+            border: 1px solid #e2edf2;
+        }
+        .chapter-sidebar h3 {
+            font-size: 1.2rem;
+            border-left: 4px solid #ffb347;
+            padding-left: 12px;
+            margin-bottom: 1rem;
+            color: #0f3b4c;
+        }
+        .chapter-nav {
+            list-style: none;
+        }
+        .chapter-nav li {
+            margin-bottom: 0.6rem;
+        }
+        .chapter-nav a {
+            display: block;
+            padding: 0.5rem 0.8rem;
+            color: #2c5a6e;
+            text-decoration: none;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .chapter-nav a:hover {
+            background: #fff0db;
+            color: #c4450c;
+        }
+        /* 右侧内容区 */
+        .content-main {
+            flex: 1;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            overflow: hidden;
+            padding: 1.8rem 2rem 2.5rem;
+            border: 1px solid #e9edf2;
+        }
+        .toolbar {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 1.2rem;
+        }
+        .download-md-btn {
+            background: #1a4a5f;
+            color: white;
+            border: none;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .download-md-btn:hover {
+            background: #ffb347;
+            color: #1e2a3a;
+        }
+        /* 笔记内容样式继承原有美观 */
+        .note-content h2 {
+            font-size: 1.7rem;
+            margin-top: 1rem;
+            margin-bottom: 0.8rem;
+            background: linear-gradient(90deg, #eef2fa, transparent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            color: #165a72;
+        }
+        .note-content h3 {
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.6rem;
+            border-left: 4px solid #2c8cbb;
+            padding-left: 12px;
+            color: #1c5a7a;
+        }
+        .note-content .theory-box {
+            background: #f9fdfe;
+            padding: 0.8rem 1.2rem;
+            border-left: 5px solid #2c8cbb;
+            margin: 1rem 0;
+            border-radius: 12px;
+        }
+        .note-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .note-content th {
+            background: #e0eff7;
+            padding: 8px;
+            border: 1px solid #cbdde6;
+        }
+        .note-content td {
+            border: 1px solid #dce6ec;
+            padding: 8px;
+        }
+        .note-content .case-block {
+            background: #fef8e8;
+            border-left: 6px solid #e6a017;
+            padding: 1rem 1.3rem;
+            margin: 1.2rem 0;
+            border-radius: 20px;
+        }
+        .note-content .case-title {
+            font-weight: 800;
+            color: #b65f00;
+            margin-bottom: 0.5rem;
+        }
+        .note-content .highlight {
+            background: #eef4fc;
+            padding: 0 2px;
+            border-radius: 6px;
+            color: #0056a7;
+        }
+        .note-content .risk-section {
+            margin-bottom: 1.5rem;
+        }
+        .note-content .grid-2 {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .note-content .card {
+            background: #ffffff;
+            border: 1px solid #e9edf2;
+            border-radius: 20px;
+            padding: 0.8rem 1rem;
+            flex: 1 1 240px;
+        }
+        .footer-note {
+            background: #ecfdf5;
+            padding: 1rem;
+            border-radius: 20px;
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+        }
+        @media (max-width: 850px) {
+            .review-layout {
+                flex-direction: column;
+                padding: 0 1rem;
+            }
+            .chapter-sidebar {
+                width: 100%;
+                position: static;
+                max-height: none;
+            }
+            .content-main {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="cpa-header">
+    <div class="logo">CPA <span>六科笔记</span></div>
+    <div class="subject-tabs" id="subjectTabs">
+        <button class="subject-btn active" data-subject="strategy">📊 战略</button>
+        <button class="subject-btn" data-subject="finance">💰 财管</button>
+        <button class="subject-btn" data-subject="accounting">📚 会计</button>
+        <button class="subject-btn" data-subject="economic">⚖️ 经济法</button>
+        <button class="subject-btn" data-subject="tax">🧾 税法</button>
+        <button class="subject-btn" data-subject="audit">🔍 审计</button>
+    </div>
+</div>
+
+<div class="review-layout">
+    <!-- 左侧章节导航（动态） -->
+    <div class="chapter-sidebar" id="chapterSidebar">
+        <h3 id="sidebarTitle">📖 章节导航</h3>
+        <ul class="chapter-nav" id="chapterList"></ul>
+    </div>
+    <!-- 右侧笔记内容 -->
+    <div class="content-main">
+        <div class="toolbar">
+            <button class="download-md-btn" id="downloadCurrentMd">📥 下载当前笔记(Markdown)</button>
+        </div>
+        <div id="noteContainer" class="note-content">
+            <!-- 动态注入笔记内容 -->
+        </div>
+    </div>
+</div>
+
+<script>
+    // --------------------------------------------------------------
+    // 1. 预置笔记内容（完全取自用户提供的文件，保留全部案例、表格、结构）
+    //    战略第二章完整HTML片段 / 战略第八章完整片段 / 财管第四章完整片段
+    // --------------------------------------------------------------
+    const strategyChapter2 = ` 
+        <h1 style="font-size:1.8rem; border-left: 6px solid #0a5c8e; padding-left: 1rem;">📘 第二章 战略分析</h1>
+        <div style="color:#3e6b8c; margin-bottom: 1rem;">🔍 第一轮知识笔记 · 外部环境 + 内部环境 + 综合分析 | 基于注协教材 & 主教材 & 考纲</div>
+        <h2>📌 一、企业外部环境分析</h2>
+        <div class="theory-box"><p><strong>宏观环境 · PEST模型</strong>：政治和法律、经济、社会文化、技术。需区分宏观与产业环境。</p></div>
+        <h3>1. 宏观环境 (PEST)</h3>
+        <table><thead><tr><th>维度</th><th>分析要点</th></tr></thead><tbody>
+        <tr><td>🏛️ 政治法律</td><td>政局稳定、政府政策、税收/进出口限制、利益集团；法律保护企业/消费者/员工/公众。</td></tr>
+        <tr><td>💰 经济</td><td>社会经济结构、GDP/通胀/利率/汇率、经济体制、宏观经济政策（财政/货币）、工资水平等。</td></tr>
+        <tr><td>👥 社会文化</td><td>人口因素(年龄/分布)、社会流动性、消费心理、生活方式、文化传统、价值观。</td></tr>
+        <tr><td>⚙️ 技术</td><td>科技体制与政策、技术进步对市场/竞争的影响（创造性或破坏性）、数智化趋势。</td></tr>
+        </tbody></table>
+        <div class="case-block"><div class="case-title">📖 【案例2.1】WS公司滤水壶业务决策——PEST分析</div><p>从2010年开始,WS公司总经理刘涛在国外发现德国B滤水壶。我国自来水处理技术标准不高，农村水质担忧，<span class="highlight">政治法律因素</span>：“《生活饮用水卫生标准》强制实施，监测指标提升至106项”；<span class="highlight">经济因素</span>：中国经济发展，居民追求健康品质生活；<span class="highlight">社会文化因素</span>：生活质量提高，追求健康新阶段；<span class="highlight">技术因素</span>：国内二次污染难解决，B滤水壶拥有椰壳活性炭等自有专利技术。据此WS签订独家代理协议。<br>✅ <strong>知识点映射</strong>：宏观环境四维度完整分析，是企业发现机会、制定战略的基础。</p></div>
+        <h3>2. 产业环境——产品生命周期</h3><p>销售额增长率曲线划分：<strong>导入期、成长期、成熟期、衰退期</strong>。</p>
+        <table><thead><tr><th>阶段</th><th>特征</th><th>战略目标</th><th>风险</th></tr></thead><tbody>
+        <tr><td>导入期</td><td>用户少、质量待提高、高营销成本</td><td>扩大市场份额，研发投入</td><td>非常高</td></tr>
+        <tr><td>成长期</td><td>销量攀升，竞争者涌入</td><td>争取最大市场份额</td><td>较高</td></tr>
+        <tr><td>成熟期</td><td>市场饱和，价格竞争</td><td>巩固份额，提高效率</td><td>中等</td></tr>
+        <tr><td>衰退期</td><td>产能过剩，毛利低</td><td>防御，控制成本或退出</td><td>进一步降低</td></tr>
+        </tbody></table>
+        <div class="case-block"><div class="case-title">📖 【案例2.2】YC白药进入牙膏市场——重塑生命周期曲线</div><p>2004年日化行业处于成熟期，YC白药推出高端“药物牙膏”，开辟功能化新需求，使市场<span class="highlight">销售额增长大于销量增长</span>，牙膏消费向中高端移动，<strong>改变了中国牙膏产业生命周期曲线，衰退之后重新上升</strong>。</p></div>
+        <h3>3. 产业五种竞争力 (波特五力模型) ★★★</h3>
+        <ul><li>潜在进入者的进入威胁（结构性障碍：规模经济、关键资源控制、市场优势；行为性障碍：限制进入定价）</li><li>替代品的替代威胁</li><li>供应者讨价还价能力</li><li>购买者讨价还价能力</li><li>产业内现有企业的竞争</li></ul>
+        <div class="case-block"><div class="case-title">📖 【案例2.3】中国调味品产业五种竞争力分析</div><p>海外企业进入(潜在进入者威胁)、综合型调料品替代传统调味品、原辅料成本上涨、消费者选择性购买、国内生产企业众多且产品差异小。老字号企业分别利用规模/差异/集中战略对抗五力。</p></div>
+        <h3>4. 市场环境分析 ★★★ (2025考纲重点)</h3><p><strong>市场集中度</strong>：绝对集中度CRn与相对集中度HHI。影响集中度的因素包括供给端、需求端、政策制度等。</p>
+        <h3>5. 竞争环境——战略群组</h3><p>作用：了解群组间竞争、“移动障碍”、发现市场机会。</p>
+        <div class="case-block"><div class="case-title">📖 【案例2.6】国内房地产行业战略群组分析</div><p>运用“专业化程度”和“地理分布程度”划分群组，专家建议HG利用多元化优势发现蓝海。</p></div>
+        <h2>🏢 二、企业内部环境分析</h2>
+        <div class="theory-box"><p>资源基础观：企业资源(有形/无形/人力) + 能力 + 核心能力决定持续竞争优势。</p></div>
+        <h3>1. 企业资源分析</h3><ul><li>有形资源：土地、设备、资金</li><li>无形资源：品牌、专利、企业文化、数据</li><li>人力资源：员工数量结构、知识能力</li></ul>
+        <div class="case-block"><div class="case-title">📖 【案例2.9】绿梦公司有机茶叶优势</div><p>有形资源：2000亩有机茶园；无形资源：全球有机认证；人力资源：科学有机管理培训，90%出口。</p></div>
+        <h3>2. 价值链分析</h3><p>基本活动：内部后勤、生产经营、外部后勤、市场销售、服务。支持活动：采购、技术开发、人力资源、基础设施。</p>
+        <div class="case-block"><div class="case-title">📖 【案例2.16】保圣汽车制造公司价值链活动分类</div><p>内部后勤(就近配件)、生产经营(JIT)、技术开发(畅销车型研发)等。</p></div>
+        <h3>3. 波士顿矩阵</h3><p>明星（高增长-强竞争）、问题、现金牛、瘦狗。对应战略：发展、保持、收割、放弃。</p>
+        <div class="case-block"><div class="case-title">📖 【案例2.20】WV公司新业务波士顿矩阵分析</div><p>乳制品/白酒（明星）；粮油（现金牛）；房地产（瘦狗出售）。</p></div>
+        <h2>⚖️ 三、企业内外部环境综合分析 (SWOT)</h2>
+        <div class="theory-box"><p>SO(增长型)、WO(扭转型)、ST(多种经营型)、WT(防御型)。</p></div>
+        <div class="case-block"><div class="case-title">📖 电力企业风能业务SWOT分析</div><p>内部优势+外部机会→规模化发展；劣势+机会→国际合作；优势+威胁→提升技术壁垒。</p></div>
+        <div class="footer-note">📌 第一轮学习关键：PEST、五力、价值链、波士顿矩阵、SWOT，结合案例练习主观题。</div>
+    `;
+    
+    const strategyChapter8 = `
+        <h1 style="font-size:1.8rem; border-left: 6px solid #ffb347; padding-left: 1rem;">⚠️ 第八章 企业面对的主要风险与应对</h1>
+        <div style="color:#3e6b8c; margin-bottom: 1rem;">CPA《公司战略与风险管理》第一轮复习笔记 · 五大风险类型及案例</div>
+        <div class="risk-section"><h2>一、战略风险与应对</h2><p><strong>含义</strong>：基于未发生不确定性事件，影响战略目标。影响因素：战略环境、战略资源、战略能力等。</p>
+        <h3>主要表现</h3><ul><li>战略制定风险：目标脱离实际</li><li>战略实施风险：人员缺乏/组织不力</li><li>战略调整风险</li><li>战略复盘整改风险</li></ul>
+        <div class="case-block"><div class="case-title">【案例8.1】文天公司战略失焦的警示</div><p>文天公司多元化盲目投资，主业占有率从20%跌至不足1%，缺乏复盘。应对：聚焦主业、转让非主业、品牌年轻化、数字化运营。映射：战略制定风险、实施风险、复盘整改风险。</p></div></div>
+        <div class="risk-section"><h2>二、市场风险与应对</h2><p><strong>市场趋势风险</strong>：市场洞察/政策响应/客户需求变动；<strong>分销风险</strong>：营销方式、品牌管理、分销商管理等。</p>
+        <div class="case-block"><div class="case-title">【案例8.2】讯云体育用品有限公司对市场风险的有效应对</div><p>收购品牌矩阵，运动科学实验室，数字化供应链，线上线下库存打通，赞助体育代表团。应对市场趋势与分销风险。</p></div></div>
+        <div class="risk-section"><h2>三、财务风险与应对</h2><p>全面预算、筹资、资金营运、投资、财务报告、担保等风险。核心应对：健全预算体系、可行性论证、资金收付审批等。</p>
+        <div class="case-block"><div class="case-title">【案例8.3】长果公司的财务隐患与管控</div><p>采购超预算、募集资金挪用、投资可转债无跟踪。应对：完善预算周报、募集资金管理办法、投资可行性模板、财务报告规范。</p></div></div>
+        <div class="risk-section"><h2>四、运营风险与应对（13类子风险）</h2><p>组织架构、人力资源、社会责任、企业文化、采购、资产、销售、研发、工程、外包、合同、信息传递、信息系统。</p>
+        <div class="grid-2"><div class="card"><strong>采购风险</strong>：计划预测不准/供应商选择不当→预算管理、供应商准入</div><div class="card"><strong>销售风险</strong>：客户信用缺失→信用档案，账款催收分离</div></div>
+        <div class="case-block"><div class="case-title">【案例8.4】广尚科技公司如何有效降低运营风险</div><p>采购计划混乱，未设信用管理部门。应对：采购标准化+预算管理，供应商动态准入，信用台账与销售催收分离，显著改善。</p></div></div>
+        <div class="risk-section"><h2>五、法律风险和合规风险与应对</h2><p>法律责任风险、行为规范风险、监管风险（证券、环保等）。</p>
+        <div class="case-block"><div class="case-title">【案例8.5】津味饮料公司应对法律风险和合规风险</div><p>财务造假22亿元，巨额罚款与诉讼。应对：开除高管，重组董事会，法务团队，职业道德培训，完善证券内控。</p></div></div>
+        <div class="footer-note">📌 依据《中央企业全面风险管理指引》及2026考纲，运营风险13类为重点，灵活运用“表现—应对”框架。</div>
+    `;
+    
+    const financeChapter4 = `
+        <h1 style="font-size:1.8rem; border-left:6px solid #2b6e9e; padding-left:1rem;">📈 第四章 资本成本 · 第一轮知识点梳理</h1>
+        <div style="color:#3e6b8c; margin-bottom:1rem;">CPA《财务成本管理》教材 (2026) | 核心：债务成本、权益成本、WACC</div>
+        <h2>📌 一、资本成本概述</h2>
+        <div class="theory-box"><p>资本成本是投资资本的机会成本（取舍率），包含公司资本成本和项目资本成本。应用：投资决策、筹资决策、营运资本管理、业绩评价。</p></div>
+        <h2>💰 二、债务资本成本估计 ★★★</h2>
+        <p><strong>方法</strong>：到期收益率法、可比公司法、风险调整法、财务比率法。税后债务成本 = 税前×(1-税率)。</p>
+        <div class="formula-card" style="background:#f8fafc; padding:12px; border-radius:16px;">公式：P<sub>0</sub>=∑利息/(1+r<sub>d</sub>)ⁿ + 本金/(1+r<sub>d</sub>)ⁿ，内插法求r<sub>d</sub></div>
+        <h2>📈 三、普通股资本成本估计 ★★★</h2>
+        <p><strong>CAPM模型</strong>：r<sub>s</sub> = r<sub>RF</sub> + β×(r<sub>m</sub>-r<sub>RF</sub>)；<strong>股利增长模型</strong>：r<sub>s</sub> = D<sub>1</sub>/P<sub>0</sub> + g；<strong>债券收益率风险调整模型</strong>：r<sub>s</sub> = 税后债务成本 + 风险溢价。</p>
+        <div class="case-block"><div class="case-title">📘 股利增长模型案例</div><p>某公司当前股价50元，预计下期股利2元，股利增长率6%，则r<sub>s</sub>=2/50+6%=10%。</p></div>
+        <h2>🔄 四、混合筹资资本成本（优先股&永续债）</h2>
+        <p>优先股r<sub>p</sub>=D<sub>p</sub>/[P<sub>p</sub>(1-F)]；永续债类似，注意税务处理（金融负债利息可抵税）。</p>
+        <h2>⚙️ 五、加权平均资本成本 (WACC)</h2>
+        <div class="formula-card">WACC = Σ (税后债务成本×债务权重) + (优先股成本×优先股权重) + (普通股成本×权益权重)</div>
+        <p>权重选择：账面价值、市场价值、目标资本结构。决策原则：项目风险与公司一致时使用WACC。</p>
+        <div class="footer-note">🔥 高频计算：债务税前成本估计+CAPM+股利增长模型+WACC综合。易错提示：注意债务成本为税后，混合筹资税务影响。</div>
+    `;
+    
+    // 其他科目暂时友好提示（会计、经济法、税法、审计暂无详细笔记，展示占位说明）
+    const placeholder = `<div style="padding:2rem; text-align:center; background:#fef9e8; border-radius:28px;"><h3>📘 待补充笔记</h3><p>该科目章节笔记正在整理中，后续会按CPA教材补充详细知识点、案例与习题。<br>当前支持 <strong>战略（第2章&第8章）</strong> 及 <strong>财管（第4章 资本成本）</strong> 完整笔记。</p><p>✨ 您可根据需要继续上传其他笔记文件，更新此复习平台。</p></div>`;
+    
+    // 章节映射表 (科目 => 章节列表 + 内容映射)
+    const subjectData = {
+        strategy: {
+            name: "公司战略与风险管理",
+            chapters: [
+                { id: "ch2", title: "第二章 战略分析", content: strategyChapter2 },
+                { id: "ch8", title: "第八章 主要风险与应对", content: strategyChapter8 }
+            ]
+        },
+        finance: {
+            name: "财务成本管理",
+            chapters: [
+                { id: "ch4", title: "第四章 资本成本", content: financeChapter4 }
+            ]
+        },
+        accounting: {
+            name: "会计",
+            chapters: [
+                { id: "acc_placeholder", title: "会计笔记（待补充）", content: placeholder }
+            ]
+        },
+        economic: {
+            name: "经济法",
+            chapters: [
+                { id: "eco_placeholder", title: "经济法笔记（待补充）", content: placeholder }
+            ]
+        },
+        tax: {
+            name: "税法",
+            chapters: [
+                { id: "tax_placeholder", title: "税法笔记（待补充）", content: placeholder }
+            ]
+        },
+        audit: {
+            name: "审计",
+            chapters: [
+                { id: "audit_placeholder", title: "审计笔记（待补充）", content: placeholder }
+            ]
+        }
+    };
+    
+    let currentSubject = "strategy";
+    let currentChapterId = null;
+    
+    // 渲染左侧章节栏
+    function renderSidebar() {
+        const data = subjectData[currentSubject];
+        if(!data) return;
+        const sidebarTitle = document.getElementById("sidebarTitle");
+        sidebarTitle.innerText = `📖 ${data.name} · 章节`;
+        const chapterList = document.getElementById("chapterList");
+        chapterList.innerHTML = "";
+        data.chapters.forEach(ch => {
+            const li = document.createElement("li");
+            const a = document.createElement("a");
+            a.href = "javascript:void(0)";
+            a.innerText = ch.title;
+            a.addEventListener("click", () => {
+                document.querySelectorAll("#chapterList a").forEach(link => link.style.background = "");
+                a.style.background = "#fff0db";
+                currentChapterId = ch.id;
+                displayNoteContent(ch.content);
+            });
+            li.appendChild(a);
+            chapterList.appendChild(li);
+        });
+        // 默认选择第一个章节
+        if(data.chapters.length > 0 && !currentChapterId) {
+            currentChapterId = data.chapters[0].id;
+            displayNoteContent(data.chapters[0].content);
+            const firstLink = chapterList.querySelector("a");
+            if(firstLink) firstLink.style.background = "#fff0db";
+        } else if(currentChapterId) {
+            const matched = data.chapters.find(c => c.id === currentChapterId);
+            if(matched) displayNoteContent(matched.content);
+            else if(data.chapters[0]) displayNoteContent(data.chapters[0].content);
+        }
+    }
+    
+    function displayNoteContent(htmlContent) {
+        const container = document.getElementById("noteContainer");
+        container.innerHTML = htmlContent;
+        // 重新绑定内嵌的可能脚本（但本身无脚本，安全）
+    }
+    
+    // 下载当前笔记（生成动态Markdown简易版）
+    function downloadCurrentNote() {
+        const data = subjectData[currentSubject];
+        if(!data) return;
+        const activeChapter = data.chapters.find(c => c.id === currentChapterId);
+        if(!activeChapter) return;
+        let mdContent = `# ${currentSubject === 'strategy' ? '战略' : currentSubject === 'finance' ? '财管' : currentSubject} 笔记\n\n`;
+        mdContent += `## ${activeChapter.title}\n\n`;
+        // 提取纯文本简易版本 (去除html标签，简化)
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = activeChapter.content;
+        let textContent = tempDiv.innerText || tempDiv.textContent;
+        textContent = textContent.substring(0, 3000) + "\n\n... 完整笔记请查看网页版。";
+        mdContent += textContent;
+        const blob = new Blob([mdContent], { type: 'text/markdown' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${currentSubject}_${activeChapter.title.replace(/[\/\\:*?"<>|]/g, '')}.md`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+    
+    // 科目切换事件
+    function switchSubject(subjectId) {
+        currentSubject = subjectId;
+        currentChapterId = null;
+        renderSidebar();
+        // 高亮科目按钮
+        document.querySelectorAll(".subject-btn").forEach(btn => {
+            if(btn.getAttribute("data-subject") === subjectId) {
+                btn.classList.add("active");
+            } else {
+                btn.classList.remove("active");
+            }
+        });
+    }
+    
+    // 绑定科目按钮事件
+    document.querySelectorAll(".subject-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            const sub = btn.getAttribute("data-subject");
+            switchSubject(sub);
+        });
+    });
+    
+    // 下载按钮
+    document.getElementById("downloadCurrentMd").addEventListener("click", downloadCurrentNote);
+    
+    // 初始化默认战略
+    switchSubject("strategy");
+</script>
+</body>
+</html>
