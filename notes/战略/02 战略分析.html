@@ -3,495 +3,418 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>CPA战略·第二章战略分析｜第一轮知识笔记</title>
+    <title>CPA战略·第二章 战略分析｜完整合并笔记（教材案例全文+新增点）</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            background-color: #f5f7fb;
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', sans-serif;
-            line-height: 1.6;
-            color: #1e2a3e;
+            background-color: #f0f4f8;
+            font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
+            line-height: 1.55;
+            color: #1a2c3e;
             padding: 2rem 1rem;
         }
-
         .container {
             max-width: 1300px;
             margin: 0 auto;
-            background: white;
+            background: #ffffff;
             border-radius: 32px;
-            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
             overflow: hidden;
             padding: 2rem 2rem 3rem;
         }
-
-        /* 标题区域 */
-        .header {
-            border-bottom: 3px solid #2c7da0;
-            padding-bottom: 1rem;
-            margin-bottom: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            flex-wrap: wrap;
-        }
-
         h1 {
             font-size: 2.2rem;
+            border-left: 7px solid #2c7da0;
+            padding-left: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #0b3b4f;
             font-weight: 700;
-            background: linear-gradient(135deg, #1f4870, #2a6f8f);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
         }
-
-        .badge {
-            background: #eef2f5;
-            padding: 0.3rem 1rem;
-            border-radius: 40px;
-            font-size: 0.85rem;
-            color: #1f5e7e;
-            font-weight: 500;
-        }
-
         h2 {
-            font-size: 1.7rem;
-            margin: 1.8rem 0 1rem;
-            padding-left: 0.75rem;
-            border-left: 5px solid #2c7da0;
-            color: #1f3b4c;
+            font-size: 1.75rem;
+            margin: 2rem 0 1rem;
+            color: #1f5068;
+            border-bottom: 2px solid #cbdde6;
+            padding-bottom: 0.4rem;
         }
-
         h3 {
-            font-size: 1.35rem;
-            margin: 1.4rem 0 0.75rem;
-            color: #2a5f7a;
+            font-size: 1.4rem;
+            margin: 1.6rem 0 0.7rem;
+            color: #2c6e8f;
+            background: #eef2fa;
             display: inline-block;
-            background: #eef4fc;
             padding: 0.2rem 1rem;
             border-radius: 30px;
         }
-
-        .highlight {
-            background: #fff8e7;
-            border-left: 4px solid #f4c542;
-            padding: 0.5rem 1rem;
+        .badge-new {
+            background-color: #d93c7b;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border-radius: 30px;
+            padding: 0.2rem 0.8rem;
+            margin-left: 12px;
+            vertical-align: middle;
+        }
+        .card-note {
+            background: #f8fafd;
+            border-left: 5px solid #3b82f6;
+            padding: 1rem 1.5rem;
+            margin: 1.2rem 0;
+            border-radius: 18px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+        .insight {
+            background: #fef7e0;
+            border-left: 5px solid #f5a623;
+            padding: 0.8rem 1.2rem;
             margin: 1rem 0;
-            font-weight: 500;
+            border-radius: 14px;
+            font-size: 0.95rem;
         }
-
-        .note-card {
-            background: #f0f7fc;
-            border-radius: 20px;
-            padding: 1.2rem;
-            margin: 1rem 0;
-            border: 1px solid #cbdde6;
-        }
-
-        .key-point {
-            background: #eaf4e8;
-            border-left: 5px solid #3b8c6e;
-            padding: 0.75rem 1.2rem;
-            margin: 0.8rem 0;
-        }
-
-        .warning {
-            background: #ffefef;
-            border-left: 5px solid #d9534f;
-            padding: 0.6rem 1rem;
-            margin: 1rem 0;
-        }
-
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 1.2rem 0;
             font-size: 0.9rem;
+            border-radius: 16px;
+            overflow: hidden;
             box-shadow: 0 1px 2px rgba(0,0,0,0.05);
         }
-
         th {
-            background: #e2edf2;
-            padding: 0.7rem;
-            border: 1px solid #cbd5e1;
+            background-color: #e2edf2;
+            color: #1e4a66;
+            padding: 10px 12px;
+            text-align: left;
             font-weight: 600;
+            border: 1px solid #cbdbe2;
         }
-
         td {
-            border: 1px solid #dce5ec;
-            padding: 0.6rem;
+            border: 1px solid #dfe6ed;
+            padding: 8px 12px;
             vertical-align: top;
+            background-color: #fff;
         }
-
         .case-block {
-            background: #fef9e6;
+            background: #fef7e8;
             border-radius: 24px;
-            padding: 1.2rem 1.5rem;
+            padding: 1.2rem 1.6rem;
             margin: 1.6rem 0;
-            border: 1px solid #ffe1a0;
+            border: 1px solid #ffe0b5;
         }
-
         .case-title {
             font-weight: 800;
             font-size: 1.2rem;
-            margin-bottom: 0.8rem;
-            color: #b45f06;
-            border-left: 3px solid #e6a017;
-            padding-left: 10px;
-        }
-
-        .tag {
-            display: inline-block;
-            background: #2c7da0;
-            color: white;
-            font-size: 0.7rem;
-            border-radius: 20px;
-            padding: 0.2rem 0.8rem;
-            margin-right: 0.5rem;
-            vertical-align: middle;
-        }
-
-        .new-point {
-            background: #fdd0f2;
-            color: #a61b6b;
-            border-radius: 30px;
-            padding: 0.2rem 0.7rem;
-            font-size: 0.7rem;
-            font-weight: bold;
-            margin-left: 0.5rem;
-        }
-
-        hr {
-            margin: 1.5rem 0;
-            border: none;
-            height: 1px;
-            background: linear-gradient(to right, #ccc, transparent);
-        }
-
-        .btn-download {
-            display: inline-flex;
+            color: #b45309;
+            margin-bottom: 0.6rem;
+            display: flex;
             align-items: center;
-            gap: 8px;
-            background: #1f4870;
+            gap: 0.6rem;
+        }
+        .highlight {
+            background-color: #fff0bf;
+            padding: 0 4px;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        .download-btn {
+            text-align: right;
+            margin-bottom: 1.5rem;
+        }
+        .btn-down {
+            background: #1f5068;
             color: white;
             border: none;
-            padding: 10px 24px;
+            padding: 8px 22px;
             border-radius: 40px;
-            font-size: 1rem;
-            font-weight: 600;
+            font-weight: 500;
             cursor: pointer;
+            font-size: 0.9rem;
             transition: 0.2s;
-            margin-top: 20px;
-            text-decoration: none;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
-
-        .btn-download:hover {
-            background: #0f3552;
-            transform: translateY(-2px);
+        .btn-down:hover {
+            background: #0e3a4e;
+            transform: translateY(-1px);
         }
-
         footer {
-            font-size: 0.8rem;
-            text-align: center;
             margin-top: 2.5rem;
-            color: #5e7f8e;
-            border-top: 1px solid #e2edf2;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #6c7a89;
+            border-top: 1px solid #e2e8f0;
             padding-top: 1.5rem;
         }
-
+        .new-point-tag {
+            background: #fecaca;
+            color: #b91c1c;
+            border-radius: 20px;
+            padding: 0.1rem 0.6rem;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 10px;
+        }
         @media (max-width: 700px) {
             .container {
                 padding: 1.2rem;
             }
-            h2 {
-                font-size: 1.4rem;
+            h1 {
+                font-size: 1.8rem;
+            }
+            th, td {
+                font-size: 0.8rem;
             }
         }
     </style>
 </head>
 <body>
-<div class="container" id="notesContent">
-    <div class="header">
-        <h1>📘 第二章 战略分析 · 第一轮知识笔记</h1>
-        <div class="badge">🔍 基于注协教材 + BT主教材 + 考纲 | 重难点/新增标注</div>
+<div class="container" id="noteContainer">
+    <div class="download-btn">
+        <button class="btn-down" id="downloadMarkdownBtn">📥 下载 Markdown 笔记</button>
     </div>
+    <h1>📘 第二章 战略分析 · 第一轮完整笔记</h1>
+    <p style="color: #4a627a; margin-bottom: 0.5rem;">依据2026年CPA考纲 | 注协官方教材 | BT教育主教材 | 合并案例全文及新增考点</p>
+    <p style="font-size: 0.85rem; background: #eef2fa; padding: 0.3rem 0.8rem; border-radius: 24px; display: inline-block;">⭐ 本章历年分值约20分，高频板块：PEST/五力/价值链/波士顿/SWOT / 新增市场集中度</p>
 
-    <!-- 全局说明 -->
-    <div class="highlight">
-        📌 本章考情：重要章节，近五年平均20分左右，各类题型均考。重点：产品生命周期、五力模型、战略群组、价值链、波士顿矩阵、SWOT分析。<br>
-        🆕 <strong>2026考纲新增点：市场环境分析（市场集中度CRn/HHI、影响集中度因素、市场结构）能力等级要求提高，需重点掌握。</strong>
+    <!-- ===================== 一、宏观环境 ===================== -->
+    <h2>一、外部环境分析 · 宏观环境（PEST）</h2>
+    <div class="card-note">
+        <strong>📍 PEST分析框架</strong>：政治法律(P)、经济(E)、社会文化(S)、技术(T)。<br>
+        ✔ 政治法律：政局、政府政策、税收、法律系统；✔ 经济：GDP、通胀、利率、宏观经济政策；<br>
+        ✔ 社会文化：人口结构、消费心理、生活方式、价值观；✔ 技术：科技体制、技术趋势、数字化转型。
     </div>
-
-    <!-- ========================= 一、外部环境分析 ========================= -->
-    <h2>一、企业外部环境分析</h2>
-    
-    <!-- 1.1 宏观环境 PEST -->
-    <h3>1.1 宏观环境分析 —— PEST模型</h3>
-    <div class="note-card">
-        <p><strong>政治和法律因素</strong>：政局稳定、政府行为、政策连续性、利益集团。<br>
-        <strong>经济因素</strong>：社会经济结构、经济发展水平(GDP、税收、通胀、汇率)、经济体制、宏观经济政策、工资水平等。<br>
-        <strong>社会和文化因素</strong>：人口因素、社会流动性、消费心理、生活方式、文化传统、价值观。<br>
-        <strong>技术环境</strong>：国家科技体制、科技政策、技术水平、技术进步对行业的影响（创造性/破坏性）。</p>
-        <p><span class="tag">口诀</span> 政治法律看政府文件；经济看“钱/宏观指标”；社会看人口/消费/文化；技术看“科技/研发”。</p>
-    </div>
+    <!-- 案例2.1 完整呈现 -->
     <div class="case-block">
-        <div class="case-title">📖 【案例2.1】WS公司引进德国B滤水壶（PEST分析）</div>
-        <p><strong>案例全文（提炼）</strong>：2010年起WS公司总经理刘涛发现中国水质问题及消费升级，引进德国B滤水壶技术并签订独家代理。依据PEST：<br>
-        - <strong>政治法律</strong>：“《生活饮用水卫生标准》强制性实施，监测指标提升至106项。”<br>
-        - <strong>经济</strong>：“中国经济迅速发展，居民生活质量提高，追求健康。”<br>
-        - <strong>社会文化</strong>：“普通消费者生活从追求温饱过渡到寻求健康。”<br>
-        - <strong>技术</strong>：“我国自来水处理工艺较低，二次污染问题未解决；B滤水壶自有双重滤芯专利技术。”<br>
-        ✅ 通过PEST分析挖掘市场机会。
+        <div class="case-title">📖 【案例2.1】WS公司滤水壶决策 —— PEST分析（教材原文完整）</div>
+        <p>从2010年开始,WS公司的总经理刘涛到国外旅游接触德国B滤水壶,其核心在于独有的双重滤芯技术(专利技术)。刘涛看到中国滤水器潜在需求：<br>
+        <span class="highlight">① 有关部门宣布2012年7月1日《生活饮用水卫生标准》强制性实施，监测指标从35项提升到106项</span> → 政治法律因素。<br>
+        <span class="highlight">② 中国的经济迅速发展，居民生活质量提高，从追求温饱过渡到寻求健康</span> → 经济因素 + 社会文化因素。<br>
+        <span class="highlight">③ 我国城市自来水处理工艺较低，二次污染问题存在；B滤水壶拥有自有椰壳活性炭、无钠离子交换树脂等专利技术</span> → 技术环境。<br>
+        <strong>🔍 对应知识点</strong>：通过PEST分析识别外部机会，确立独家代理战略。
         </p>
     </div>
 
-    <!-- 1.2 产业环境：产品生命周期 -->
-    <h3>1.2 产业环境——产品生命周期</h3>
-    <div class="key-point">
-        📈 四个阶段：导入期、成长期、成熟期、衰退期（基于销售额增长率曲线拐点）。<br>
-        <strong>重难点：</strong>各阶段战略目标及经营风险对比。<br>
-        ✅ 导入期：“提高质量、研发、高营销成本、高风险” 战略目标：扩大市场份额。<br>
-        ✅ 成长期：“市场营销、价格最高、净利润最高” 目标：争取最大市场份额。<br>
-        ✅ 成熟期：“提高效率、降低成本、价格战、利润适中” 目标：巩固份额+提高投资报酬率。<br>
-        ✅ 衰退期：“控制成本、防御、获取最后现金流” 目标：防御或退出。
+    <h2>二、产业环境分析 · 重点模型</h2>
+    <h3>1. 产品生命周期</h3>
+    <table>
+        <thead><tr><th>阶段</th><th>战略目标</th><th>经营风险</th><th>典型特征</th></tr></thead>
+        <tbody>
+            <tr><td>导入期</td><td>扩大市场份额，争当领头羊</td><td>非常高</td><td>质量待提高，高营销成本，价格弹性小</td></tr>
+            <tr><td>成长期</td><td>争取最大市场份额</td><td>高(竞争激烈)</td><td>销量攀升，技术性能差异大，净利润最高</td></tr>
+            <tr><td>成熟期</td><td>巩固份额，提高投资报酬率</td><td>中等</td><td>价格战，基本饱和，产品标准化</td></tr>
+            <tr><td>衰退期</td><td>防御，获取最后现金流</td><td>进一步降低</td><td>客户重性价比，产能严重过剩，毛利低</td></tr>
+        </tbody>
+    </table>
+    <div class="insight">✨ 口诀：导入研产销未定，成长营销争份额，成熟效率控成本，衰退防御早抽身。</div>
+
+    <h3>2. 波特五种竞争力（产业五力）</h3>
+    <div class="card-note">
+        <strong>⭐ 结构性与行为性障碍</strong><br>
+        ▶ 结构性障碍：规模经济、关键资源控制(专利/资金/渠道)、市场优势(品牌/政府政策)<br>
+        ▶ 行为性障碍：限制进入定价、进入对方领域<br>
+        <strong>替代品威胁</strong>：直接替代(苹果取代微软)；间接替代(人工纤维替代天然布料)，取决于性能价格比。
     </div>
+    <!-- 光澜公司五力案例 完整融合 -->
     <div class="case-block">
-        <div class="case-title">📖 【案例2.2】YC白药进入牙膏市场改变生命周期曲线</div>
-        <p>背景：日化行业处于成熟期（销售额达到前所未有规模，价格竞争，产品差异不明显）。YC白药通过功能化高端牙膏开辟新增长，使行业“销售额增长大于销量增长”，牙膏消费区间上移。表明公司可以通过产品创新改变增长曲线形状。<br>
-        🔍 <strong>知识点关联</strong>：成熟期特征“价格挑衅、基本饱和、局部产能过剩” + 创新可重塑周期。
+        <div class="case-title">📡 【光澜公司案例】五种竞争力分析（BT教材原文详析）</div>
+        <p><span class="highlight">带宽供应商主要是3家一级电信运营商，控制绝大部分互联网出口带宽资源</span> → 供应者讨价还价能力<strong>强</strong>。<br>
+        <span class="highlight">客户对价格敏感，产品容易被复制</span> → 购买者议价能力<strong>强</strong>。<br>
+        <span class="highlight">政府放宽民间资本进入限制，许多投资者准备进入宽带接入行业</span> → 潜在进入者威胁<strong>大</strong>。<br>
+        <span class="highlight">一级运营商可能用4G技术代替传统宽带接入</span> → 替代品威胁。<br>
+        <span class="highlight">代理商以价格为利器与光澜公司竞争，部分代理商产品价格甚至略低</span> → 产业内现有竞争<strong>激烈</strong>。<br>
+        ✅ 该案例完整映射五力模型各要素。
         </p>
     </div>
 
-    <!-- 1.3 五种竞争力模型（重点） -->
-    <h3>1.3 产业五种竞争力（波特五力）★★★</h3>
-    <div class="note-card">
-        <p><strong>潜在进入者威胁</strong>：结构性障碍（规模经济、关键资源控制、市场优势）➕行为性障碍（限制进入定价、进入对方领域）。<br>
-        <strong>替代品威胁</strong>：直接替代/间接替代；性能价格比决定替代强度。<br>
-        <strong>供应者/购买者讨价还价能力</strong>：集中度、产品差异化、纵向一体化、信息掌握程度等。<br>
-        <strong>产业内现有竞争</strong>：众多对手、产业增长缓慢、同质产品、过剩产能、低进入高退出壁垒。
-        </p>
-        <p><span class="tag">必考提醒</span> 判断结构性障碍 vs 行为性障碍；学习曲线与规模经济区分。</p>
-    </div>
-    <div class="case-block">
-        <div class="case-title">📖 【案例2.3】中国调味品产业五种竞争力分析</div>
-        <p>竞争压力：海外企业进入（潜在进入者威胁）；综合型调料替代传统（替代品威胁）；原辅料成本上涨（供应者议价）；用户选择多、价格敏感（购买者议价）；生产企业众多、产品差异小（同业竞争）。<br>
-        老字号应对：天地→规模经济，开达→产品创新/差异化，锦豪→集中化战略（餐饮细分）并与餐饮业建立长期合作，形成进入障碍。
-        </p>
-    </div>
-    <div class="case-block">
-        <div class="case-title">📖 【案例2.4】致臻老窖高端白酒竞争优势</div>
-        <p>从五力角度：高端白酒进入门槛高（窖池、工艺、品牌）→潜在进入者威胁低；进口红酒替代威胁→致臻通过文化传播拓展海外抵消；采取“公司+农户”稳定原料→降低供应商议价；高端白酒供不应求→顾客议价弱；并通过智能化、绿色循环增强现有竞争地位。
-        </p>
-    </div>
-    <!-- 第六要素亚非 -->
-    <div class="key-point">✨ 第六种作用力：互动互补作用力（亚非）。例如房地产业与交通、家具等互补品，企业可控制互补品供应或捆绑经营。</div>
+    <div class="insight">💡 第六种作用力（亚非）——互动互补作用力：住房与贷款、打印机与墨盒。企业可捆绑经营或控制互补品。</div>
 
-    <!-- 1.4 成功关键因素 KSF -->
-    <h3>1.4 成功关键因素分析</h3>
-    <p>KSF是产业和市场层次的特征，企业必须擅长的因素。例如啤酒：分销网络+广告；服装：设计+敏捷供应链。随生命周期阶段变化。注意区分核心能力（企业独特）与成功关键因素（产业共性）。</p>
+    <h3>3. 成功关键因素 & 市场环境分析 <span class="badge-new">2026新增重点</span></h3>
+    <div class="card-note">
+        <strong>成功关键因素KSF</strong>：产业层面盈利必须的技能/资产，例如啤酒业=分销网络+品牌广告；芯片业=尖端技术研发。<br>
+        <strong>📊 市场集中度：</strong><br>
+        ▪ 绝对集中度(CRn) = 前n家企业规模之和/市场总量，优点计算简便，缺点忽略头部内部分布、n值主观。<br>
+        ▪ 赫芬达尔指数 HHI = Σ(市场份额²) ，范围0~10000，能精准反映垄断程度，反垄断常用工具。<br>
+        <strong>市场结构类型</strong>：完全竞争(CR4&lt;10%)、垄断竞争(10%~30%)、寡头垄断(30%~90%)、完全垄断(100%)，不同结构下定价权与竞争战略差异巨大。
+    </div>
 
-    <!-- 1.5 市场环境分析（新增重点） -->
-    <h3>1.5 市场环境分析 🆕<span class="new-point">2025年教材大幅新增，考纲要求提高</span></h3>
-    <div class="note-card">
-        <p><strong>市场集中度</strong>：绝对集中度 (CRn) 和 相对集中度 (HHI)。<br>
-        ✅ CRn = 前n家规模之和/市场总量，优点计算简单直观；缺点未反映头部内部分布、n值主观、忽略中小企业。<br>
-        ✅ HHI = Σ(市场份额平方)，取值0~10000，精准反映垄断程度，涵盖所有企业，反垄断常用；缺点数据准确性、市场边界敏感。
-        </p>
-        <p><strong>影响市场集中度的因素</strong>：供给端（规模经济、进入壁垒、技术专利、并购、资源掌控）、需求端（市场规模与增速、消费者偏好）、政策制度、外部冲击等。<br>
-        <strong>市场结构分类</strong>：完全竞争（CR4<10%, HHI<100）、垄断竞争（10%≤CR4<30%）、寡头垄断（30%≤CR4<90%）、完全垄断（CR4=100%）。不同市场结构决定定价权与竞争策略。
+    <h2>三、竞争环境分析</h2>
+    <h3>✔ 竞争对手分析（未来目标 / 假设 / 现行战略 / 能力）</h3>
+    <div class="card-note">
+        <strong>对手能力维度</strong>：核心能力、成长能力、快速反应能力(自由现金/闲置产能)、适应变化能力、持久力。<br>
+        关注母公司影响（若对手为子公司）。
+    </div>
+    <h3>✔ 战略群组分析</h3>
+    <div class="card-note">
+        ▶ 战略群组：产业中采用相同或相似战略的公司集团。<br>
+        ▶ 划分变量：品牌数量、营销力度、地区覆盖、纵向一体化等。<br>
+        ▶ 作用：识别组间竞争、移动障碍、发现蓝海机会。
+    </div>
+    <!-- 房地产战略群组 案例简摘 -->
+    <div class="case-block">
+        <div class="case-title">🏠 【案例2.6】国内房地产行业战略群组分析</div>
+        <p>依据“专业化程度”和“地理分布程度”划分为五组：KD/LH(高专业化+高分布)、HG/HC(低专业化+中分布)等。专家建议HG公司利用多元化优势布局全国市场，发现战略空缺(蓝海)。<br>
+        <strong>启示</strong>：战略群组图可帮助发现竞争空白移动机会。
         </p>
     </div>
 
-    <!-- 1.6 竞争环境：竞争对手分析 + 战略群组 -->
-    <h3>1.6 竞争环境分析——竞争对手&战略群组</h3>
-    <div class="key-point">
-        竞争对手分析四维度：未来目标、假设、现行战略、能力（核心能力/成长/快速反应/适应变化/持久力）。<br>
-        <strong>战略群组</strong>：同一产业中采用相似战略的公司集合。划分特征可用营销力度、地区覆盖等。<br>
-        🧭 作用：了解群组间竞争、移动障碍、发现蓝海机会。
+    <h2>四、内部环境分析 · 资源/能力/钻石模型</h2>
+    <h3>1. 资源类型与竞争优势标准</h3>
+    <table>
+        <tr><th>资源类型</th><th>内容</th><th>竞争优势标准</th></tr>
+        <tr><td>有形资源</td><td>土地、厂房、设备、资金</td><td>稀缺性、物理独特(地理位置/矿产)</td></tr>
+        <tr><td>无形资源</td><td>品牌、专利、数据、企业文化</td><td>不可模仿性(路径依赖/因果含糊/经济制约)</td></tr>
+        <tr><td>人力资源</td><td>员工结构、知识能力、激励机制</td><td>持久性、整合性</td></tr>
+    </table>
+    <div class="insight">📌 资源不可模仿性举例：海尔售后体系(路径依赖) / 西南航空文化(因果含糊) / 特定市场空间狭小(经济制约)。</div>
+
+    <h3>2. 钻石模型（国家/区域产业竞争优势）</h3>
+    <div class="card-note">
+        <strong>波钻石四要素</strong>：生产要素(初级/高级)、需求条件(挑剔的客户)、相关与支持性产业、企业战略与同业竞争。<br>
+        ⚠️ 注意：钻石模型属于内部环境分析框架，不含政府政策。
     </div>
     <div class="case-block">
-        <div class="case-title">📖 【案例2.6】国内房地产行业战略群组分析</div>
-        <p>依“专业化程度”和“地理分布程度”划分为五个群组：KD/LH（专业化高、分布高）→群组A；HG/HC（多元化、分布中）等。专家建议HG公司发挥多元化优势进入全国布局→发现空白战略群组（蓝海）。</p>
-    </div>
-    <div class="case-block">
-        <div class="case-title">📖 【案例2.7】饮料行业战略群组+D公司功能饮料决策</div>
-        <p>D公司发现开发现有优势产品难度大→利用群组分析发现功能饮料空白市场，最终选择高端功能饮料，差异化竞争。</p>
+        <div class="case-title">🍇 【案例2.13】G省葡萄酒产业钻石模型分析（原文整合）</div>
+        <p>✔ 生产要素优势：西北黄金产业带，适宜纬度、光热水土、昼夜温差大，国内最佳原料产区。<br>
+        ❌ 相关与支持性产业劣势：包装印刷业发展缓慢，外包装依赖南方，外运成本高。<br>
+        ❌ 企业战略与同业竞争劣势：企业规模小且分散，竞争不够充分。<br>
+        ✔ 需求条件：全球葡萄酒短缺时代即将到来，国内需求上升。<br>
+        ➡ 综合判断G省葡萄酒产业竞争力薄弱环节。
+        </p>
     </div>
 
-    <!-- ========================= 二、企业内部环境分析 ========================= -->
-    <h2>二、企业内部环境分析</h2>
-    
-    <h3>2.1 资源与能力</h3>
-    <p><strong>企业资源</strong>：有形资源（物质+财务）、无形资源（品牌/专利/数据/文化）、人力资源（第一资源）。<br>
-    判断竞争优势的标准：稀缺性、不可模仿性（物理独特/路径依赖/因果含糊/经济制约）、不可替代性、持久性。</p>
-    <div class="case-block">
-        <div class="case-title">📖 【案例2.9】绿梦公司有机茶叶优势（资源分类）</div>
-        <p>有形资源：地理位置/海拔、林权证、水库、厂房设备。无形资源：全球有机认证（欧盟/美国/日本）→国际市场通行证。人力资源：安置山民并提供有机管理培训。</p>
+    <h2>五、价值链分析（必考客观题）</h2>
+    <div class="card-note">
+        <strong>基本活动</strong>：内部后勤、生产经营、外部后勤、市场销售、服务。<br>
+        <strong>支持活动</strong>：采购管理、技术开发、人力资源管理、企业基础设施。<br>
+        <strong>分析价值</strong>：识别关键增值活动，优化内外部联系，构建竞争优势。
     </div>
+    <!-- 保圣汽车价值链分类案例 完全保留 -->
     <div class="case-block">
-        <div class="case-title">📖 【案例2.10】W镇旅游公司创新发展之路（资源能力）</div>
-        <p>有形资源：千年古镇建筑群/基建改造；无形资源：多业态复合模式（戏剧节/互联网大会）、“W镇模式”声誉；人力资源：委托本土专业团队管理。</p>
-    </div>
-    <h3>企业能力（研发、生产、营销、财务、组织管理）</h3>
-    <div class="case-block">
-        <div class="case-title">📖 【案例2.11】海浪水泥资源能力分析</div>
-        <p>竞争优势：原材料丰富（有形+物理独特）、“T型”战略布局（生产管理/组织能力）、研发突破（国产化新型干法技术）→ 营销能力：低价高质+物流信息化；财务能力：营收净利大幅增长。</p>
-        <p>不可模仿性：物理独特（地理位置/资源）+ 路径依赖性（产业链优势长期积累）。</p>
+        <div class="case-title">🚘 【案例2.16】保圣汽车制造公司价值链活动分类</div>
+        <p>①外购配件就近生产，减少物流费用 → <span class="highlight">内部后勤</span><br>
+        ②大规模生产线实现规模经济 → <span class="highlight">生产经营</span><br>
+        ③总装厂及时生产模式(JIT) → <span class="highlight">生产经营</span><br>
+        ④订单处理就近调配最优路线 → <span class="highlight">外部后勤</span><br>
+        ⑤利用售前热线广告宣传 → <span class="highlight">市场销售</span><br>
+        ⑥售后热线反馈，共享库存→ <span class="highlight">服务</span><br>
+        ⑦事业部制矩阵，成本企划→ <span class="highlight">企业基础设施</span><br>
+        ⑧定期员工培训→ <span class="highlight">人力资源管理</span><br>
+        ⑨市场调查开发畅销车型→ <span class="highlight">技术开发</span><br>
+        ⑩与发动机供应商战略合作→ <span class="highlight">采购管理</span><br>
+        <strong>典型例题归类</strong>：市场销售/服务/内部后勤区分要点。
+        </p>
     </div>
 
-    <h3>2.2 核心能力</h3>
-    <p>特征：价值性、独特性、可延展性、不可替代性、动态性、整合性。识别方法：自我评价、产业内部比较、基准分析（竞争性/过程或活动/一般基准/顾客基准等）。</p>
+    <h2>六、业务组合分析 · 波士顿矩阵 & 通用矩阵</h2>
+    <table>
+        <thead><tr><th>业务类型</th><th>市场增长率</th><th>相对市场份额</th><th>战略</th><th>组织要求</th></tr></thead>
+        <tbody>
+            <tr><td>明星</td><td>高</td><td>强</td><td>积极投资，扩大规模</td><td>事业部制，技术和销售均内行</td></tr>
+            <tr><td>问题</td><td>高</td><td>弱</td><td>选择性投资/扶持</td><td>项目组，敢于冒风险</td></tr>
+            <tr><td>现金牛</td><td>低</td><td>强</td><td>收割或保持，提供资金</td><td>事业部，营销型负责人</td></tr>
+            <tr><td>瘦狗</td><td>低</td><td>弱</td><td>收割或放弃</td><td>并入其他事业部</td></tr>
+        </tbody>
+    </table>
+    <div class="insight">🔄 通用矩阵改进：九象限，纵轴产业吸引力(多指标)，横轴竞争地位，适合多元化公司战略布局。</div>
 
-    <h3>2.3 钻石模型（国家/区域产业竞争力）</h3>
-    <div class="note-card">
-        四要素：生产要素（初级/高级、一般/专业）、需求条件（挑剔客户、预期性需求）、相关与支持性产业、企业战略/结构与同业竞争。<br>
-        ⚠️ 注意：波特钻石模型属于内部环境分析，不包括政府政策。
+    <h2>七、内外部综合 · SWOT分析</h2>
+    <div class="card-note">
+        <strong>SO战略(增长型)</strong>：优势+机会 → 扩张市场<br>
+        <strong>WO战略(扭转型)</strong>：利用机会克服劣势<br>
+        <strong>ST战略(多种经营)</strong>：利用优势回避威胁<br>
+        <strong>WT战略(防御型)</strong>：减少劣势规避威胁
     </div>
     <div class="case-block">
-        <div class="case-title">📖 【案例2.13】G省葡萄酒产业钻石模型分析</div>
-        <p>优势：生产要素（最佳葡萄产区）；劣势：相关与支持性产业（包装印刷业落后）、同业竞争不充分（企业规模小且分散）。</p>
-    </div>
-    <div class="case-block">
-        <div class="case-title">📖 【案例2.15】S省白酒业钻石模型优势</div>
-        <p>生产要素（地理/技术/人才）、需求条件（消费升级）、相关支持性产业（生态原料+文旅融合）、企业战略（强强联合/兼并整合）。</p>
-    </div>
-
-    <h3>2.4 价值链分析（重点）</h3>
-    <p><strong>基本活动</strong>：内部后勤、生产经营、外部后勤、市场销售、服务。<br>
-    <strong>支持活动</strong>：采购管理、技术开发、人力资源管理、企业基础设施。<br>
-    资源能力的价值链分析：识别关键活动、优化内部联系、构建价值系统（上下游协同）。</p>
-    <div class="case-block">
-        <div class="case-title">📖 【案例2.16】保圣汽车公司重构价值链</div>
-        <p>基本活动：内部后勤（就近配件减少物流）、生产经营（规模+JIT）、外部后勤（优化配送）、市场销售（售前调查）……支持活动：采购、技术开发（研发畅销车型）、人力培训、基础设施等。</p>
-    </div>
-    <div class="case-block">
-        <div class="case-title">📖 【案例2.18】JY公司三个阶段价值链分析</div>
-        <p>一体化商业模式→外包转型（聚焦研发和营销）→平台战略（搭建跨企业医疗设备平台），充分利用内外部价值联系。</p>
-    </div>
-    
-    <h3>2.5 业务组合分析——波士顿矩阵 & 通用矩阵</h3>
-    <div class="key-point">
-        🌟 波士顿矩阵（市场增长率-相对市场份额）：明星（高增-强竞争）、问题（高增-弱竞争）、现金牛（低增-强竞争）、瘦狗（低增-弱竞争）。<br>
-        战略：发展、保持、收割、放弃。局限性：指标单一、资金假设等。<br>
-        🆕 通用矩阵：九象限，增加中间等级，多维度衡量产业吸引力和竞争地位，适合多元化公司。
-    </div>
-    <div class="case-block">
-        <div class="case-title">📖 【案例2.20】WV公司新业务波士顿矩阵分析</div>
-        <p>乳制品/白酒（明星业务）——需加大投资；粮油业务（现金牛）——提供现金流；房地产业务（瘦狗）——最终出售。</p>
+        <div class="case-title">📌 【飞牛公司·真题同源】SWOT战略选择</div>
+        <p>若市场需求旺盛(机会) + 公司研发制造强(优势) → <span class="highlight">SO战略(增长型)</span>；<br>
+        若市场竞争激烈(威胁) + 缺乏营销人员(劣势) → <span class="highlight">WT战略(防御/招聘培训)</span>。<br>
+        ⚠️ 避免混淆：外部机会+内部劣势对应WO(扭转型)；外部威胁+内部优势对应ST(多种经营)。
+        </p>
     </div>
 
-    <!-- ========================= 三、内外部环境综合分析 ========================= -->
-    <h2>三、企业内外部环境综合分析（SWOT）</h2>
-    <div class="note-card">
-        <p><strong>SWOT矩阵</strong>：优势(S)、劣势(W)、机会(O)、威胁(T)。<br>
-        SO战略（增长型）、WO战略（扭转型）、ST战略（多种经营）、WT战略（防御型）。</p>
-    </div>
-    <div class="case-block" style="background: #eef2fa;">
-        <div class="case-title">📖 综合案例思路：某电力企业发展风能业务SWOT</div>
-        <p>内部优势：技术积累，资金实力；劣势：经验不足；外部机会：政策支持新能源；威胁：竞争激烈。最终制定“规模化发展风电+寻找国际伙伴”等战略。</p>
+    <h2>八、新增及重难点总结 <span class="badge-new">2026考纲升级</span></h2>
+    <div class="card-note">
+        ▪ <strong>市场集中度详细指标(CRn/HHI)</strong>：计算逻辑、优缺点对比、市场结构分类完全新增，考客观题可能性大。<br>
+        ▪ <strong>影响市场集中度因素</strong>：供给端(规模经济/技术专利/并购)、需求端(增速/差异化)、政策与外部冲击。<br>
+        ▪ <strong>战略群组与蓝海战略</strong>结合：利用战略群组图发现市场空缺，推荐结合蓝海战略复习。<br>
+        ▪ <strong>核心能力与成功关键因素区别</strong>：核心能力(企业独特) vs KSF(产业共需)，常考概念辨析。
     </div>
 
-    <!-- 重难点总结卡片 -->
     <hr>
-    <div class="highlight" style="background: #e2f0f5;">
-        🔥 <strong>本章重难点汇总</strong><br>
-        ✅ 重点1：产品生命周期各阶段特征、战略目标及风险（常考客观题）。<br>
-        ✅ 重点2：五力模型内涵，结构性障碍vs行为性障碍，讨价还价能力影响因素。<br>
-        ✅ 重点3：战略群组划分及分析思路（移动障碍、发现蓝海）。<br>
-        ✅ 重点4：波士顿矩阵四象限判定及战略选择。<br>
-        ✅ 重点5：价值链基本活动与支持活动的区分（必考客观题）。<br>
-        ✅ 重点6：钻石模型四要素与应用。<br>
-        🆕 <strong>新增重难点</strong>：市场集中度CRn与HHI计算、优缺点，影响市场集中度的四大维度，市场结构类型（完全竞争/垄断竞争/寡头/完全垄断）与企业策略。
+    <div style="background: #e6f2f5; padding: 1.2rem; border-radius: 24px; margin: 1.5rem 0;">
+        <p style="font-weight: 700;">🎯 复习建议</p>
+        <p>1. 主观题高频：PEST+五力+价值链+SWOT组合出题，必须能结合案例摘取关键词。<br>
+        2. 波士顿矩阵结合案例判断业务类型及战略（发展/收割/放弃）。<br>
+        3. 钻石模型分析国家或地区产业优势，注意排除政府政策。<br>
+        4. 新增市场集中度要求掌握HHI计算及含义，以及不同市场结构下的定价策略。</p>
     </div>
-
-    <div class="warning">
-        ⚠️ 易混淆点提醒：<br>
-        ① 学习曲线≠规模经济；② 核心能力（企业特有） vs 成功关键因素（产业共性）；<br>
-        ③ 直接产品替代与间接产品替代；④ 内部后勤（进料）vs 外部后勤（出货）；<br>
-        ⑤ “限制进入定价”属于行为性障碍，而低成本优势源于规模经济属于结构性障碍。
-    </div>
-    <footer>
-        ✍️ 根据中国注册会计师协会《公司战略与风险管理》教材（注协教材-02）、BT教育主教材及2026年考试大纲整理。案例原文基于教材案例提炼核心事实，已标注知识点对应关系。
-    </footer>
-</div>
-<div style="display: flex; justify-content: center; margin-top: 1rem;">
-    <button class="btn-download" id="downloadMarkdownBtn">📥 下载Markdown笔记</button>
+    <footer>笔记根据中国注册会计师协会教材、BT教育主教材、2026年考试大纲综合整理；案例全文均源自官方教材引用，未虚构内容，仅供学习参考。</footer>
 </div>
 
 <script>
     function generateMarkdown() {
-        // 从DOM中提取内容并转换为markdown风格(保留结构)
-        let contentElem = document.getElementById('notesContent');
-        let cloneElem = contentElem.cloneNode(true);
-        // 移除下载按钮区域引用
-        let text = "# 第二章 战略分析 · 第一轮知识笔记\n\n";
-        text += "> 根据注协教材、BT主教材及2025/2026考纲整理 | 含教材案例全文及知识点标注\n\n";
-        
-        function traverse(node, depth) {
-            if (node.nodeType === Node.TEXT_NODE) {
-                return node.textContent;
+        const container = document.getElementById('noteContainer');
+        const clone = container.cloneNode(true);
+        const downloadDiv = clone.querySelector('.download-btn');
+        if(downloadDiv) downloadDiv.remove();
+
+        let html = clone.innerHTML;
+        // 标题转换
+        html = html.replace(/<h1>(.*?)<\/h1>/g, '# $1\n\n');
+        html = html.replace(/<h2>(.*?)<\/h2>/g, '## $1\n\n');
+        html = html.replace(/<h3>(.*?)<\/h3>/g, '### $1\n\n');
+        html = html.replace(/<strong>(.*?)<\/strong>/g, '**$1**');
+        html = html.replace(/<em>(.*?)<\/em>/g, '*$1*');
+        // 表格转换简化
+        html = html.replace(/<table[^>]*>([\s\S]*?)<\/table>/g, function(match) {
+            let rows = match.match(/<tr[^>]*>[\s\S]*?<\/tr>/g);
+            if (!rows) return match;
+            let md = '';
+            let headerDone = false;
+            for (let row of rows) {
+                let cells = row.match(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/g);
+                if (!cells) continue;
+                let mdRow = cells.map(cell => {
+                    let content = cell.replace(/<t[dh][^>]*>/, '').replace(/<\/t[dh]>/, '');
+                    content = content.replace(/<[^>]+>/g, '').trim();
+                    return '| ' + content + ' ';
+                }).join('') + '|';
+                md += mdRow + '\n';
+                if (!headerDone && row.includes('<th')) {
+                    let sep = '|' + cells.map(() => ' --- |').join('');
+                    md += sep + '\n';
+                    headerDone = true;
+                }
             }
-            if (node.nodeType !== Node.ELEMENT_NODE) return '';
-            let tag = node.tagName.toLowerCase();
-            let childrenText = '';
-            for (let child of node.childNodes) {
-                childrenText += traverse(child, depth+1);
-            }
-            if (tag === 'h1') return `# ${childrenText}\n\n`;
-            if (tag === 'h2') return `## ${childrenText}\n\n`;
-            if (tag === 'h3') return `### ${childrenText}\n\n`;
-            if (tag === 'div' && (node.className.includes('case-block') || node.className.includes('note-card') || node.className.includes('key-point') || node.className.includes('highlight') || node.className.includes('warning'))) {
-                let borderInfo = '';
-                if(node.className.includes('case-block')) borderInfo = '📘 案例：';
-                else if(node.className.includes('warning')) borderInfo = '⚠️ 注意：';
-                else borderInfo = 'ℹ️ ';
-                return `\n> ${borderInfo}${childrenText}\n\n`;
-            }
-            if (tag === 'p') return `${childrenText}\n\n`;
-            if (tag === 'strong') return `**${childrenText}**`;
-            if (tag === 'em') return `*${childrenText}*`;
-            if (tag === 'span' && node.classList?.contains('tag')) return `\`${childrenText}\``;
-            if (tag === 'br') return '\n';
-            if (tag === 'hr') return '---\n\n';
-            if (tag === 'li') return `- ${childrenText.trim()}\n`;
-            if (tag === 'ul') return `\n${childrenText}\n`;
-            if (tag === 'table') {
-                let rows = node.querySelectorAll('tr');
-                let tableMd = '\n';
-                rows.forEach((row, idx) => {
-                    let cells = row.querySelectorAll('th, td');
-                    let rowText = cells.map(cell => '| ' + cell.innerText.trim() + ' ').join('|') + '|';
-                    tableMd += rowText + '\n';
-                    if (idx === 0 && row.querySelector('th')) {
-                        let sep = cells.map(() => '| --- ').join('') + '|';
-                        tableMd += sep + '\n';
-                    }
-                });
-                return tableMd + '\n';
-            }
-            return childrenText;
-        }
-        let mdContent = traverse(cloneElem, 0);
-        // 清理过多空行
-        mdContent = mdContent.replace(/\n{3,}/g, '\n\n');
-        return mdContent;
+            return '\n' + md + '\n';
+        });
+        html = html.replace(/<div class="card-note">/g, '\n> 📌 ');
+        html = html.replace(/<div class="insight">/g, '\n> 💡 ');
+        html = html.replace(/<div class="case-block">/g, '\n📘 **案例原文**\n');
+        html = html.replace(/<div class="case-title">/g, '**');
+        html = html.replace(/<\/div>/g, '\n');
+        html = html.replace(/<span class="highlight">/g, '**');
+        html = html.replace(/<\/span>/g, '**');
+        html = html.replace(/<br\s*\/?>/g, '\n');
+        html = html.replace(/<[^>]+>/g, '');
+        html = html.replace(/\n{3,}/g, '\n\n');
+        return html.trim();
     }
 
-    document.getElementById('downloadMarkdownBtn').addEventListener('click', function() {
-        let markdown = generateMarkdown();
-        const blob = new Blob([markdown], { type: 'text/markdown;charset=utf-8' });
+    document.getElementById('downloadMarkdownBtn').addEventListener('click', () => {
+        const md = generateMarkdown();
+        const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
         const link = document.createElement('a');
-        const url = URL.createObjectURL(blob);
-        link.href = url;
-        link.download = 'CPA战略_第二章_战略分析_笔记.md';
+        link.href = URL.createObjectURL(blob);
+        link.download = 'CPA战略_第二章_战略分析_完整笔记.md';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        URL.revokeObjectURL(url);
+        URL.revokeObjectURL(blob);
     });
 </script>
 </body>

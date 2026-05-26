@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>CPA经济法·物权法律制度+利他合同补充｜第一轮知识笔记</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f5f7fb;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.55;
+            color: #1e2a3e;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 2rem 1.8rem;
+        }
+
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #2c6e9e;
+            padding-bottom: 1rem;
+            margin-bottom: 1.8rem;
+        }
+        h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e4668, #2c6e9e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
+        }
+        .badge {
+            background: #eef2fa;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #2c6e9e;
+            display: inline-block;
+        }
+        .download-btn {
+            background: #1e4668;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .download-btn:hover {
+            background: #0f3552;
+            transform: translateY(-1px);
+        }
+        .info-tag {
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            color: #5c6f87;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            border-bottom: 1px dashed #dce5f0;
+            padding-bottom: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .toc {
+            background: #f0f4fa;
+            padding: 1.2rem 1.5rem;
+            border-radius: 24px;
+            margin-bottom: 2rem;
+        }
+        .toc h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #1e3a5f;
+        }
+        .toc-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1.2rem;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #2c6e9e;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border-bottom: 1px dotted transparent;
+        }
+        .toc a:hover {
+            border-bottom-color: #2c6e9e;
+        }
+        h2 {
+            font-size: 1.7rem;
+            margin: 1.6rem 0 0.8rem 0;
+            padding-left: 0.5rem;
+            border-left: 5px solid #2c6e9e;
+            font-weight: 600;
+            color: #1e3a5f;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 1.4rem 0 0.6rem 0;
+            color: #2c6e9e;
+            font-weight: 600;
+            display: inline-block;
+            background: #eef3fc;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin: 1rem 0 0.3rem;
+            color: #1e4668;
+            font-weight: 600;
+        }
+        .highlight {
+            background: #fef7e0;
+            padding: 0.1rem 0.2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            color: #b45f06;
+        }
+        .case-block {
+            background: #f9fafc;
+            border-left: 4px solid #2c6e9e;
+            padding: 1rem 1.4rem;
+            margin: 1.2rem 0;
+            border-radius: 16px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+        .case-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #2c6e9e;
+            margin-bottom: 0.4rem;
+        }
+        .legal-note {
+            background: #eef3f9;
+            padding: 0.8rem 1rem;
+            border-radius: 14px;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        th {
+            background-color: #e6f0f9;
+            padding: 10px 8px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 1px solid #cbdde9;
+        }
+        td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #e9edf2;
+            vertical-align: top;
+        }
+        .star {
+            color: #e67e22;
+            font-weight: bold;
+        }
+        .new-point {
+            background: #e1f5e8;
+            color: #2b6e3c;
+            font-size: 0.7rem;
+            border-radius: 30px;
+            padding: 2px 8px;
+            display: inline-block;
+            margin-left: 8px;
+            font-weight: 500;
+        }
+        footer {
+            margin-top: 2.5rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #6c86a3;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1.5rem;
+        }
+        @media (max-width: 680px) {
+            .container {
+                padding: 1.2rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="notesContent">
+    <div class="header-bar">
+        <div>
+            <h1>📘 物权法律制度 · 补充利他合同理论 | 第一轮精粹笔记</h1>
+            <div class="badge">CPA 经济法（第三章 + 合同法衔接）| 基于2025考纲 + 民法典解释</div>
+        </div>
+        <button class="download-btn" id="downloadMarkdown">📥 下载 Markdown</button>
+    </div>
+    <div class="info-tag">
+        <span>⭐ 考试权重：物权8分+合同结合案例常见“利他合同”考点</span>
+        <span>📅 大纲时效：法规截至2025年12月31日</span>
+        <span>🆕 新增：真正的利他合同 vs 非真正的利他合同（第三人履行规则）</span>
+    </div>
+
+    <!-- 目录导航 -->
+    <div class="toc">
+        <h3>📌 考点导航</h3>
+        <div class="toc-grid">
+            <a href="#sec1">1.物&种类</a> <a href="#sec2">2.物权概念&原则</a> <a href="#sec3">3.物权变动&公示</a>
+            <a href="#sec4">4.所有权&共有</a> <a href="#sec5">5.善意取得</a> <a href="#sec6">6.用益物权</a>
+            <a href="#sec7">7.担保物权总论</a> <a href="#sec8">8.抵押权</a> <a href="#sec9">9.质权</a>
+            <a href="#sec10">10.留置权</a> <a href="#sec11">11.超级优先权&让与担保</a>
+            <a href="#sec12">12.真正的利他合同与非真正的利他合同 ★新增</a>
+        </div>
+    </div>
+
+    <!-- ===================== 原物权部分精要 ===================== -->
+    <h2 id="sec1">一、物的概念与种类（★★）</h2>
+    <p><strong>物权法上的物</strong>须满足：<span class="highlight">有体性、可支配性、在人体之外</span>。行为、智力成果不是物权客体。</p>
+    <h4>📌 物的种类速记</h4>
+    <table>
+        <tr><th>分类标准</th><th>类型</th><th>典型举例</th></tr>
+        <tr><td>流通性</th><td>流通物/限制流通物(文物、黄金)/禁止流通物(专属国家)</td><td>禁止流通：矿藏、水流等</td></tr>
+        <tr><td>移动性</th><td>不动产(土地、房屋) vs 动产</td><td>重要：不动产登记，动产交付</td></tr>
+        <tr><td>可替代性</th><td>可替代物(粮食)/不可替代物(齐白石画)</td><td>仅限于动产</td></tr>
+        <tr><td>可分性</th><td>可分物(米、酒) / 不可分物(手机、牛)</td><td>共有分割时意义</td></tr>
+        <tr><td>主从物</th><td>从物辅助主物(钥匙、备用胎)</td><td>无相反约定，从物随主物</td></tr>
+        <tr><td>原物孳息</th><td>天然孳息(果实、幼畜) / 法定孳息(租金、利息)</td><td>用益物权人优先取得天然孳息</td></tr>
+    </table>
+    <div class="legal-note">✅ <strong>真题点睛</strong> (2021)：消费物与非消费物的分类仅限于动产；汽车属于不可分物；文物属限制流通物。</div>
+
+    <h2 id="sec2">二、物权概念·种类·基本原则（★★★）</h2>
+    <p><strong>物权=直接支配+排他</strong>（所有权、用益物权、担保物权）。与债权区别：支配权vs请求权；绝对权vs相对权；排他性vs兼容性。</p>
+    <h4>基本原则</h4>
+    <ul>
+        <li><span class="highlight">物权法定</span>：种类、内容由法律规定。违反物权法定，物权创设无效，但不影响合同效力（叔侄“经营权”案 → 物权无效，但合同有效，叔叔无权要求返还店铺）。</li>
+        <li><span class="highlight">物权客体特定</span>（一物一权）：所有权只能存在于一物之上，但所有权人可为多人。</li>
+        <li><span class="highlight">公示原则</span>：动产交付/不动产登记。例外（土地承包经营权、地役权合同生效设立，登记对抗）。</li>
+    </ul>
+    <div class="case-block">
+        <div class="case-title">📖 【案例·物权法定】叔侄约定创设“经营权”</div>
+        <p>侄子支付30万元，在叔叔店铺上享有排他性占有、使用、收益，期限20年，叔叔若与第三人订立合同转让，侄子可主张合同无效。<br>
+        <strong>分析：</strong> 物权法定原则，“经营权”非《民法典》规定的用益物权种类 → 违反种类法定，物权行为无效；但债权合同仍有效，叔叔无权直接请求返还店铺（见2023真题）。</p>
+    </div>
+
+    <h2 id="sec3">三、物权变动（★★★）</h2>
+    <p><strong>基于法律行为</strong>：动产原则交付生效，不动产原则登记生效（例外：动产抵押权合同生效设立；土地承包经营权、地役权合同生效，登记对抗）。<br>
+    <strong>非基于法律行为</strong>：合法建造、继承、法院判决/征收决定等，自事实成就/法律文书生效时发生效力，无须公示即可取得，但再处分须先登记。</p>
+    <h4>🔁 交付替代方式</h4>
+    <ul>
+        <li><strong>简易交付</strong>：受让人已占有（租转买），买卖合同生效时物权变动。</li>
+        <li><strong>指示交付</strong>：转让人请求第三人返还原物的权利代替交付。</li>
+        <li><strong>占有改定</strong>：出让人继续占有，借用约定生效时物权变动（<span class="highlight">不能用于善意取得交付</span>）。</li>
+    </ul>
+    <div class="case-block">
+        <div class="case-title">🚲 【彬哥案例·占有改定】自行车转让</div>
+        <p>赵某借自行车给钱某，2022.1.10双方达成转让协议。1.11钱某将该车转让给孙某，约定钱某继续使用至2月25日。<br>
+        <strong>解析</strong>：1.10钱某通过<strong>简易交付</strong>取得所有权；1.11钱某与孙某约定占有改定，孙某于约定生效时取得所有权（2021真题改编）。</p>
+    </div>
+    <h4>📋 不动产登记类型</h4>
+    <p>首次登记、变更登记(主体不变内容变)、转移登记(主体变更)、更正登记、异议登记(15日内不起诉失效)、预告登记(90日未申请失效，未经预告权利人同意处分不发生物权效力)。</p>
+
+    <h2 id="sec4">四、所有权 · 共有（★★★）</h2>
+    <p><strong>国家所有权</strong>：矿藏、水流、海域、城市土地等；<strong>集体所有权</strong>；<strong>私人所有权</strong>（含法人）。</p>
+    <h4>共有形态（无约定→按份共有，家庭关系除外）</h4>
+    <table>
+        <tr><th></th><th>共同共有</th><th>按份共有</th></tr>
+        <tr><td>重大修缮/变更</th><td>全体同意</td><td>份额≥2/3同意</td></tr>
+        <tr><td>共有物分割</th><td>共有的基础丧失或有重大理由</td><td>随时请求分割（约定除外）</td></tr>
+        <tr><td>对外债务</th><td>连带债权债务</td><td>连带债权债务，内部按份追偿</td></tr>
+        <tr><td>份额处分</th><td>-</td><td>自由转让，其他共有人同等条件优先购买权</td></tr>
+    </table>
+    <div class="legal-note">💡 <strong>优先购买权关键点</strong>：仅交易中产生（继承、遗赠无优先权）；行使期间通知载明≥15日，未通知则知道之日起15日或权属转移6个月；两个以上按份共有人协商不成按份额比例行使。</div>
+
+    <h2 id="sec5">五、善意取得制度（★★★）</h2>
+    <p><strong>构成要件（同时满足）</strong>：无权处分 + 受让人善意 + 合理价格 + 动产交付/不动产登记 + 转让合同有效。<br>
+    ❌ 不适用：遗失物、盗窃物（脱手物），占有改定不满足交付要求。</p>
+    <div class="case-block">
+        <div class="case-title">📱 【遗失物不适用善意取得】案例</div>
+        <p>乙拾得甲的手机，以500元卖给不知情的经销商丙。<br>
+        <strong>解析</strong>：乙无权处分，甲未失去所有权；甲可向乙请求损害赔偿，并且自知道受让人丙之日起2年内请求返还原物（但若丙从具有经营资格的经营者购得，甲需支付费用后追偿）。真题正确选项：乙行为无权处分；甲有权请求乙赔偿。</p>
+    </div>
+
+    <h2 id="sec6">六、用益物权（★★）</h2>
+    <p><strong>口诀：土地建宅居</strong> — 土地承包经营权、建设用地使用权、宅基地使用权、居住权、地役权。<br>
+    其中<span class="highlight">建设用地使用权</span>自登记时设立；住宅用地70年，届满<span class="highlight">自动续期</span>；非住宅届满前1年申请续期。<br>
+    划拨方式取得的土地使用权转让须经审批；出让转让需完成开发投资总额25%以上。</p>
+    <div class="legal-note">🆕 集体经营性建设用地出让须经村民会议2/3以上成员同意，且可参照同类国有建设用地执行。</div>
+
+    <h2 id="sec7">七、担保物权概述（★）</h2>
+    <p>从属性、附条件性、优先受偿性。包括<span class="highlight">意定担保</span>（抵押权、质权）和<span class="highlight">法定担保</span>（留置权）。主债权诉讼时效届满，抵押权人丧失胜诉权（抵押人可主张不担责）。</p>
+
+    <h2 id="sec8">八、抵押权（★★★）</h2>
+    <h4>1. 抵押财产范围</h4>
+    <p>可抵押：建筑物、建设用地使用权、海域使用权、生产设备、原材料、正在建造的船舶等。禁止抵押：土地所有权、宅基地、公益设施、权属不明财产、被查封财产。</p>
+    <h4>2. 抵押设立方式</h4>
+    <ul>
+        <li>不动产抵押：书面合同 + 登记（登记生效）</li>
+        <li>动产抵押：合同生效即设立，未经登记不得对抗善意第三人（<span class="highlight">正常经营买受人规则</span>：无论是否登记，不得对抗已支付合理价款并取得动产的买受人）</li>
+    </ul>
+    <div class="case-block">
+        <div class="case-title">🏠 【房地一体+新增建筑物】彬哥案例</div>
+        <p>2024.1.1甲公司将土地及地上建筑物抵押给乙银行。同年6月新建建筑物，2025年建成。2026年拍卖共得2200万，新建物价值600万。乙银行只能就1600万优先受偿。<br>
+        <strong>知识点</strong>：抵押权效力不及于新建物，但处分时须一并处分，价款中新增部分无优先权。</p>
+    </div>
+    <h4>3. 抵押物转让（民法典新规）</h4>
+    <p>抵押人可转让抵押财产，及时通知抵押权人。若约定禁止转让未登记，转让有效且受让人取得无负担所有权（善意）；若禁止转让已登记，则转让不发生物权效力（但受让人代偿除外）。</p>
+    <h4>4. 抵押权顺位 & 超级优先权</h4>
+    <p>登记优先于未登记，均按登记时间先后；未登记按债权比例。动产价款债权抵押权（<strong>超级优先权</strong>）：标的物交付后10日内办理登记的，该抵押权人优先于除留置权外的其他担保物权人。如：融资租赁出租人、出卖人价款抵押权。</p>
+
+    <h2 id="sec9">九、质权（★★）</h2>
+    <p><strong>动产质权</strong>：书面合同+交付（流质条款无效）。<strong>权利质权</strong>：有权利凭证的交付设立（汇票、仓单、提单）；基金份额、股权、知识产权、应收账款——办理出质登记设立。<br>
+    质权人不得擅自使用、转质；负有妥善保管义务。</p>
+
+    <h2 id="sec10">十、留置权（★★）</h2>
+    <p>法定担保物权，成立要件：合法占有债务人/第三人动产 + 债权已届清偿期 + 同一法律关系（<span class="highlight">企业之间除外</span>）。留置权人应给债务人60日以上履行期（鲜活易腐除外）。<br>
+    <strong>效力顺位</strong>：同一动产上留置权 > 动产超级优先权 > 已登记抵押权/质权(按时间先后) > 未登记抵押权。</p>
+    <div class="case-block">
+        <div class="case-title">🚚 【企业留置例外】案例</div>
+        <p>运输公司承运甲公司设备，甲公司未支付前次运费，运输公司留置本次设备。个人司机不行，但企业之间留置不受同一法律关系限制（《民法典》448条）。</p>
+    </div>
+
+    <h2 id="sec11">十一、重点新增点&难点总结（★★★）</h2>
+    <ul>
+        <li><span class="star">✨ 动产抵押超级优先权（价款债权抵押权）</span> — 《民法典》416条，交付后10日内登记，可优先于公示在先的浮动抵押权和其他担保权（留置权除外）。2025大纲考察概率高。</li>
+        <li><span class="star">✨ 让与担保</span> — 形式上转移所有权，实质上担保功能。流质条款无效，但债权人可请求参照担保物权优先受偿（《民法典担保制度解释》68条）。</li>
+        <li><span class="star">✨ 正常经营买受人规则</span> — 动产抵押即使已登记，也不得对抗正常经营活动中的买受人（已付合理价款+取得占有）。</li>
+        <li><span class="star">✨ 抵押不破租赁</span> — 抵押权设立前已出租并转移占有的，原租赁关系不受影响。</li>
+        <li><span class="star">✨ 异议登记与预告登记失效期间</span> — 异议登记15日内不起诉失效；预告登记自能够登记之日起90日内未申请失效。</li>
+    </ul>
+
+    <!-- ===================== 新增内容：真正的利他合同与非真正的利他合同 ===================== -->
+    <h2 id="sec12">十二、真正的利他合同与非真正的利他合同（★★★ 合同法+担保物权衔接）<span class="new-point">新增必考衔接点</span></h2>
+    <p>在担保、保险以及涉及第三人履行的物权合同中常考。根据《民法典》第522条，分为两种形态：</p>
+    <h4>📌 概念界定</h4>
+    <ul>
+        <li><strong>真正的利他合同（不真正利他合同？注意术语纠正）</strong>：<span class="highlight">真正的利他合同 = 第三人直接取得履行请求权</span>。法律规定或者当事人约定第三人可直接请求债务人向其履行债务，第三人未在合理期限内明确拒绝的，第三人可以请求债务人承担违约责任。</li>
+        <li><strong>非真正的利他合同（即第三人负担/向第三人履行合同）</strong>：当事人约定由债务人向第三人履行债务，但<span class="highlight">第三人未取得独立的履行请求权</span>，仅作为债权受领方，违约时仍由债权人主张违约责任。</li>
+    </ul>
+    <table>
+        <tr><th>对比维度</th><th>真正的利他合同</th><th>非真正的利他合同</th></tr>
+        <tr><td><strong>第三人权利</strong></th><td>第三人享有直接请求履行的权利，可起诉债务人</td><td>第三人仅为履行受领人，无独立请求权</td></tr>
+        <tr><td><strong>拒绝权</strong></th><td>第三人可在合理期限内明确拒绝</td><td>无此问题，第三人只是接受履行方</td></tr>
+        <tr><td><strong>违约责任请求权</strong></th><td>第三人或债权人皆可主张债务人违约</td><td>仅债权人可主张违约，第三人无权</td></tr>
+        <tr><td><strong>典型案例</strong></th><td>保险合同（受益人直接请求保险金）、信托合同、真正的第三方保理</td><td>父母为子女付款的买卖合同、指示付款合同</td></tr>
+    </table>
+
+    <div class="case-block">
+        <div class="case-title">📄 【真正的利他合同·经典】保险合同受益人</div>
+        <p>甲（投保人）与乙保险公司签订人寿保险合同，指定丙为受益人。丙虽非合同当事人，但依据《保险法》及民法典第522条第2款，<strong>丙享有直接向乙保险公司请求支付保险金的权利</strong>。若乙拒绝理赔，丙可作为原告起诉，此即真正利他合同。</p>
+        <p><strong>知识点对应</strong>：受益人直接请求权独立于投保人，体现“第三人直接取得履行请求权”。</p>
+    </div>
+
+    <div class="case-block">
+        <div class="case-title">📄 【非真正的利他合同·指示交付/付款】</div>
+        <p>甲向乙购买设备，约定乙将设备交付给丙（甲的关联公司），甲向乙支付货款。丙仅为受领指示人，如果乙交付的设备有瑕疵，<span class="highlight">丙无权直接要求乙承担违约责任</span>，只能由甲主张权利。这属于“向第三人履行”的非真正利他合同。</p>
+        <p><strong>关联物权变动</strong>：指示交付情境（动产转让由第三人直接交付）——第三方占有，通过转让返还请求权完成交付，此时第三人并非合同请求权主体。</p>
+    </div>
+
+    <h4>🧠 实务难点与考试陷阱</h4>
+    <ul>
+        <li>合同约定“向第三人履行”并不当然等于第三人享有独立请求权；必须有“第三人可直接请求”或者法律规定（如《保险法》）。</li>
+        <li>真正的利他合同成立后，债务人未履行，第三人主张违约责任时，原债权人仍享有债权人的地位（如解除合同权利通常保留）。</li>
+        <li>在保证合同中，若约定一般保证人向第三方（特定债权人之外的人）履行，则需辨析是否构成真正的利他，通常不构成；而债权人受益的保证合同保证人直接对债权人承担责任不属于利他合同范畴。</li>
+        <li>与<strong>债务加入</strong>区分：债务加入是第三人自愿加入履行，第三人成为债务人；利他合同中的第三人是权利人而非债务人。</li>
+    </ul>
+    <div class="legal-note">
+        🔔 <strong>法条依据</strong>：《民法典》第522条<br>
+        当事人约定由债务人向第三人履行债务，债务人未向第三人履行债务或者履行债务不符合约定的，应当向债权人承担违约责任（非真正利他）。<br>
+        法律规定或者当事人约定第三人可以直接请求债务人向其履行债务，第三人未在合理期限内明确拒绝的，第三人可以请求债务人承担违约责任（真正利他）。
+    </div>
+
+    <h4>📎 与经济法/担保制度关联（综合题命题方向）</h4>
+    <p>1. <strong>物权担保+利他</strong>：债务人将抵押物变卖后指示买受人将价款直接支付给担保权人，该约定若明确担保权人可直接请求支付，可能构成真正的利他合同。<br>
+    2. <strong>让与担保+利他结构</strong>：实践中让与担保的收益分配条款涉及第三人时需判断是否赋予独立请求权。<br>
+    3. 2025年大纲新增“民法典合同编通则解释”背景下，利他合同与代位权、撤销权结合命题可能性上升。</p>
+    <div class="case-block">
+        <div class="case-title">🔍 真题延伸（模拟预测）</div>
+        <p>甲公司与乙银行订立借款合同，约定由丙公司（关联方）代乙银行收取还款本息，后丙公司未收到款项，丙是否有权起诉甲公司？<br>
+        <strong>分析</strong>：若合同中未赋予丙直接请求的权利，则属于“向第三人履行”，丙仅为受领人，无权起诉甲公司；应由乙银行主张违约。如果约定“丙有权直接请求甲公司支付”，则丙享有独立请求权。</p>
+    </div>
+    <hr>
+
+    <h2>📌 附：本章核心法律关系图（案例索引）</h2>
+    <p><strong>无权处分+善意取得公式</strong>：无权处分 + 善意 + 合理价格 + 动产交付/不动产登记 = 善意取得（所有权转移）。<br>
+    <strong>不动产物权变动公式</strong>：有权处分 + 登记 = 物权变动；<strong>动产变动</strong>：有权处分 + 交付 = 物权变动（简易交付/指示交付等）。<br>
+    <strong>利他合同</strong>：真正的利他 → 第三人独立请求权；非真正的利他 → 仅受领履行。</p>
+    <div class="case-block">
+        <div class="case-title">📝 例题·按份共有与无权处分（彬哥案例）</div>
+        <p>甲乙按份共有一设备，甲份额1/4，乙3/4。①甲未经乙同意以市价卖给不知情的丙，约定3日后交付 ➜ 设备未交付，丙不能善意取得。②乙将设备卖给丁并交付 ➜ 有权处分，丁取得所有权。无权处分不影响买卖合同效力。</p>
+    </div>
+    <footer>📖 第一轮复习 · 物权法基石 + 利他合同理论 | 结合《民法典》及合同编通则解释 | 本笔记已包含所有高频考点及新增“真正的利他合同”对比分析</footer>
+</div>
+
+<script>
+    document.getElementById('downloadMarkdown').addEventListener('click', function() {
+        let content = document.getElementById('notesContent').cloneNode(true);
+        const headerClone = content.querySelector('.header-bar');
+        if(headerClone) {
+            const btn = headerClone.querySelector('.download-btn');
+            if(btn) btn.remove();
+        }
+        let titleText = '# CPA 经济法 · 物权法律制度 + 利他合同专题 第一轮精粹笔记\n\n';
+        titleText += '> 考试权重：物权约8分 + 合同法结合（利他合同常在案例中与担保、保险结合考查）。基于《民法典》第522条及2025考纲。\n\n';
+        
+        function getMarkdownFromElement(el) {
+            let md = '';
+            function traverse(node) {
+                if(node.nodeType === Node.TEXT_NODE) {
+                    md += node.textContent;
+                } else if(node.nodeType === Node.ELEMENT_NODE) {
+                    const tag = node.tagName.toLowerCase();
+                    if(tag === 'div' && (node.classList.contains('toc') || node.classList.contains('info-tag'))) {
+                        traverseChildren(node);
+                        return;
+                    }
+                    if(tag === 'br') md += '\n';
+                    else if(tag === 'h2') { md += '\n## ' + node.innerText.trim() + '\n\n'; }
+                    else if(tag === 'h3') { md += '\n### ' + node.innerText.trim() + '\n\n'; }
+                    else if(tag === 'h4') { md += '#### ' + node.innerText.trim() + '\n\n'; }
+                    else if(tag === 'p') { md += node.innerText.trim() + '\n\n'; }
+                    else if(tag === 'ul' || tag === 'ol') {
+                        node.querySelectorAll('li').forEach(li => { md += '- ' + li.innerText.trim() + '\n'; });
+                        md += '\n';
+                    } else if(tag === 'table') {
+                        let rows = node.querySelectorAll('tr');
+                        rows.forEach((row, idx) => {
+                            let cols = row.querySelectorAll('th, td');
+                            let line = Array.from(cols).map(cell => cell.innerText.trim()).join(' | ');
+                            md += '| ' + line + ' |\n';
+                            if(idx === 0) md += '|' + Array.from(cols).map(() => '---').join('|') + '|\n';
+                        });
+                        md += '\n';
+                    } else if(tag === 'div' && node.classList.contains('case-block')) {
+                        md += '> **📖 案例**：' + node.innerText.trim() + '\n\n';
+                    } else if(tag === 'div' && node.classList.contains('legal-note')) {
+                        md += '> 💡 *' + node.innerText.trim() + '*\n\n';
+                    } else {
+                        traverseChildren(node);
+                    }
+                }
+            }
+            function traverseChildren(node) {
+                node.childNodes.forEach(child => traverse(child));
+            }
+            traverse(el);
+            return md;
+        }
+        let tempDiv = document.createElement('div');
+        tempDiv.appendChild(content.cloneNode(true));
+        let markdownBody = getMarkdownFromElement(tempDiv);
+        let finalMarkdown = titleText + markdownBody;
+        finalMarkdown = finalMarkdown.replace(/\n{3,}/g, '\n\n');
+        const blob = new Blob([finalMarkdown], {type: 'text/markdown'});
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = '物权法_利他合同_笔记.md';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(link.href);
+    });
+</script>
+</body>
+</html>
