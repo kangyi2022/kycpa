@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPA财管：资本成本 | 第一轮知识笔记（含公式渲染）</title>
+    <!-- MathJax 核心库，用于正确显示 LaTeX 公式 -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #f0f2f8;
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            line-height: 1.55;
+            color: #1e2a3a;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 25px 45px -12px rgba(0,0,0,0.2);
+            overflow: hidden;
+            padding: 2rem 2rem 2.5rem;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #0a2b3e;
+            border-left: 6px solid #f59e0b;
+            padding-left: 1.2rem;
+        }
+        .sub {
+            color: #4a627a;
+            border-bottom: 1px solid #e4e9f0;
+            padding-bottom: 1rem;
+            margin-bottom: 1.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+        }
+        .badge-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+        .badge {
+            background: #eef2ff;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #1e40af;
+        }
+        .badge.hot {
+            background: #ffedd5;
+            color: #b45309;
+        }
+        .badge.new {
+            background: #dcfce7;
+            color: #15803d;
+        }
+        h2 {
+            font-size: 1.65rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid #e2e8f0;
+            color: #0c4a6e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.8rem 0;
+            color: #2c3e66;
+            padding-left: 0.2rem;
+        }
+        .formula-card {
+            background: #f8fafc;
+            border-left: 5px solid #3b82f6;
+            padding: 1rem 1.5rem;
+            margin: 1.2rem 0;
+            border-radius: 18px;
+            overflow-x: auto;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+        .formula-card p, .formula-card div {
+            font-family: 'Courier New', 'SF Mono', monospace;
+            font-size: 1rem;
+        }
+        .note {
+            background: #fef9e3;
+            border-radius: 16px;
+            padding: 0.8rem 1.2rem;
+            margin: 1rem 0;
+            border-left: 4px solid #f59e0b;
+            font-size: 0.93rem;
+        }
+        .tip {
+            background: #e6f7ec;
+            border-radius: 16px;
+            padding: 0.8rem 1.2rem;
+            margin: 1rem 0;
+            border-left: 4px solid #2b9348;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.2rem 0;
+            font-size: 0.9rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        th, td {
+            border: 1px solid #cfdee9;
+            padding: 0.75rem 1rem;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f1f5f9;
+            font-weight: 700;
+        }
+        .highlight-bg {
+            background-color: #fff1db;
+        }
+        hr {
+            margin: 2rem 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, #cbd5e1, transparent);
+        }
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #1e2a3e;
+            color: white;
+            padding: 0.6rem 1.4rem;
+            border-radius: 40px;
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: 0.2s;
+            margin-top: 1.8rem;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .btn-download:hover {
+            background: #2d3e56;
+            transform: translateY(-1px);
+        }
+        footer {
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            text-align: center;
+            color: #7c8ba0;
+        }
+        .key-point {
+            background: #e2e8f0;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        @media (max-width: 680px) {
+            .container { padding: 1.2rem; }
+            h1 { font-size: 1.6rem; }
+        }
+        .math {
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="notesContent">
+    <h1>📘 第四章 资本成本 · 第一轮知识笔记</h1>
+    <div class="sub">
+        <span>基于 BT教材 + 2025 CPA考试大纲（财管）| 核心公式与新增点</span>
+        <div class="badge-group">
+            <span class="badge hot">🔥 高频主观题</span>
+            <span class="badge new">✨ 2025新增：优先股/永续债（金融负债分类）公式</span>
+            <span class="badge">📊 年均6~8分</span>
+        </div>
+    </div>
+
+    <!-- 一、概述 -->
+    <h2>一、资本成本概述</h2>
+    <p><strong>资本成本</strong> = 机会成本（投资本项目的必要报酬率），也称作<strong>取舍率、最低可接受的报酬率</strong>。分为<strong>公司资本成本</strong>（加权平均）与<strong>投资项目资本成本</strong>。影响因素：无风险利率、经营/财务风险溢价。</p>
+    <div class="note">
+        ✅ 若新项目风险 = 公司现有资产平均风险 → 项目资本成本 = 公司资本成本；<br>
+        ✅ 风险高于平均 → 资本成本更高；低于平均 → 更低。<br>
+        ⚡ <strong>内部因素</strong>：资本结构、投资政策；<strong>外部因素</strong>：无风险利率、市场风险溢价、税率。
+    </div>
+
+    <h2>二、债务资本成本</h2>
+    <p><strong>核心原则</strong>：债务资本成本是债权人<strong>期望收益率</strong>（考虑违约风险），通常取未来长期债务成本。</p>
+    
+    <h3>📐 税前债务成本估计方法（无发行费用）</h3>
+    <ul>
+        <li><strong>① 到期收益率法</strong>（有上市长期债券）<br>
+        <div class="formula-card">
+            \[ P_0 = \sum_{t=1}^{n} \frac{I}{(1+r_d)^t} + \frac{M}{(1+r_d)^n} \]
+            其中 \(P_0\) 为债券市价，\(I\) 年利息，\(M\) 面值，\(r_d\) 为到期收益率（税前债务成本）。<br>
+            <strong>扩展（每年付息m次）</strong>：先求计息期利率 \(r_d'\)，则税前有效年成本 \(= (1+r_d')^m - 1\)。
+        </div>
+        </li>
+        <li><strong>② 可比公司法</strong>：无可交易债券，找同行业可比公司的长期债券到期收益率。</li>
+        <li><strong>③ 风险调整法</strong>：有信用评级时
+            <div class="formula-card">
+                \[ \text{税前债务成本} = r_{RF} + \text{信用风险补偿率} \]
+                信用风险补偿率 = 同信用级别公司债券到期收益率 - 同期政府债券到期收益率的平均值。
+            </div>
+        </li>
+        <li><strong>④ 财务比率法</strong>：通过财务比率模拟信用级别，再按风险调整法计算。</li>
+    </ul>
+
+    <h3>📌 考虑发行费用的税前债务成本</h3>
+    <div class="formula-card">
+        \[ P_0 \times (1 - F) = \sum_{t=1}^{n} \frac{I}{(1+r_d)^t} + \frac{M}{(1+r_d)^n} \]
+        \(F\)：发行费用率；解出的 \(r_d\) 即为考虑发行费用的税前债务成本。
+    </div>
+
+    <h3>📌 税后债务资本成本（利息抵税）</h3>
+    <div class="formula-card">
+        \[ \text{税后债务成本} = r_d \times (1 - T) \]
+        \(T\) 为企业所得税税率。
+    </div>
+    <div class="tip">
+        💡 抢分技巧：债务成本四字原则——“长期、未来、期望”。若公司处于财务困境（垃圾债券），应使用期望收益而非承诺收益。
+    </div>
+
+    <!-- 普通股资本成本 -->
+    <h2>三、普通股资本成本</h2>
+    <h3>1️⃣ 资本资产定价模型 (CAPM)</h3>
+    <div class="formula-card">
+        \[ r_s = r_{RF} + \beta \times (r_m - r_{RF}) \]
+        <ul style="margin-top: 0.3rem;">
+            <li>\( r_{RF} \)：无风险利率（通常选用10年期政府债券到期收益率）</li>
+            <li>\( \beta \)：股票贝塔，反映系统风险（驱动因素：经营风险、财务风险）</li>
+            <li>\( r_m - r_{RF} \)：市场风险溢价（几何平均法更适宜长期预测）</li>
+        </ul>
+    </div>
+    
+    <h3>2️⃣ 股利增长模型 (DDM)</h3>
+    <div class="formula-card">
+        \[ r_s = \frac{D_1}{P_0} + g \quad,\quad D_1 = D_0 \times (1+g) \]
+        <strong>增长率的估计：</strong>
+        <ul>
+            <li>历史增长率（几何平均 \( g = \sqrt[n]{\frac{FV}{PV}} - 1 \) 更合理）</li>
+            <li>可持续增长率：\( g = \text{期初权益预期净利率} \times \text{利润留存率} \) （满足不增发新股且经营效率稳定）</li>
+            <li>证券分析师预测均值</li>
+        </ul>
+    </div>
+
+    <h3>3️⃣ 债券收益率风险调整模型</h3>
+    <div class="formula-card">
+        \[ r_s = r_{dt} + RP_c \]
+        \( r_{dt} \)：税后债务资本成本；\( RP_c \)：3%～5%的风险溢价（风险高取5%）。
+    </div>
+
+    <h3>📌 考虑发行费用的普通股资本成本</h3>
+    <div class="formula-card">
+        \[ r_s = \frac{D_1}{P_0 \times (1 - F)} + g \]
+        \(F\)：发行费用率；<span class="key-point">留存收益成本 = 不考虑发行费用的普通股成本</span>。
+    </div>
+
+    <!-- 混合筹资重点新增 -->
+    <h2>四、混合筹资资本成本 ★ 2025新增考点</h2>
+    <div class="badge new" style="margin-bottom: 6px;">📌 根据2025教材与大纲：优先股/永续债分类为金融负债时资本成本计算公式新增（需会区分税前税后）</div>
+    <h3>🔹 优先股资本成本</h3>
+    <ul>
+        <li><strong>分类为权益工具</strong>（股息不可税前扣除）：<div class="formula-card">\[ r_p = \frac{D_p}{P_p \times (1-F)} \] （此为税后资本成本）</div></li>
+        <li><strong>分类为金融负债</strong>（股息允许税前扣除）：<div class="formula-card">\[ \text{税前 } r_p = \frac{D_p}{P_p \times (1-F)} \quad;\quad \text{税后} = r_p^{\text{税前}} \times (1-T) \]</div></li>
+    </ul>
+    <h3>🔹 永续债资本成本</h3>
+    <ul>
+        <li><strong>分类为权益工具</strong>：<div class="formula-card">\[ r_{pd} = \frac{I_{pd}}{P_{pd} \times (1-F)} \] （税后）</div></li>
+        <li><strong>分类为金融负债</strong>：<div class="formula-card">\[ \text{税前 } r_{pd} = \frac{I_{pd}}{P_{pd} \times (1-F)} \quad;\quad \text{税后} = r_{pd}^{\text{税前}} \times (1-T) \]</div></li>
+    </ul>
+    <div class="note">
+        ✨ 易混辨析：金融负债下利息/股息可税前扣除 → 需进一步计算税后成本；权益工具下作为利润分配，公式结果即为税后。考试时务必看清题目给出的分类条件。
+    </div>
+
+    <h2>五、加权平均资本成本 (WACC)</h2>
+    <div class="formula-card">
+        \[ WACC = \sum_{j} w_j \times r_j \]
+        其中债务部分使用税后成本：\( w_d \times r_d(1-T) + w_p \times r_p + w_e \times r_s \)。
+        <br><strong>权重选择</strong>：无特别说明时优先采用<strong>实际市场价值权重</strong>；若无法获得市场价值则用账面价值权重；目标资本结构权重用于长期评价。
+    </div>
+
+    <!-- 重难点及新增总结 -->
+    <h2>📌 本章重难点 & 新增点结构化总结</h2>
+    <table>
+        <thead><tr><th width="28%">类别</th><th>详细解析</th></tr></thead>
+        <tbody>
+            <tr><td class="highlight-bg">🌟 核心重点</td><td>① 债务成本四种估计方法（到期收益率法/可比公司法/风险调整法/财务比率法）及内插法求解；② CAPM三参数估计（无风险利率、β、市场风险溢价）；③ 股利增长模型及g的计算（几何平均/可持续增长率）；④ 加权平均资本成本权重确定与综合计算。</td></tr>
+            <tr><td class="highlight-bg">⚠️ 难点突破</td><td>① 债券半年/每季付息时：先求计息期\(r_d\)，再转化为有效年利率；② 存在发行费用时的内插法调整；③ 可持续增长率\(g = ROE \times b\)与历史增长率的联系与区分；④ 优先股/永续债在金融负债/权益不同分类下税前税后成本处理。</td></tr>
+            <tr><td class="highlight-bg">✨ 2025教材新增</td><td>根据BT主教材第四章及最新考纲，<strong>优先股和永续债分类为金融负债时资本成本计算公式</strong>为全新要求，需重点掌握税前资本成本基础上乘以(1-所得税税率)得到税后成本，与分类为权益工具的处理形成鲜明对比。客观题与计算题均可能涉及。</td></tr>
+        </tbody>
+    </table>
+
+    <!-- 重要公式汇总表（含衍生） -->
+    <h2>🧮 核心公式汇总表（含衍生公式）</h2>
+    <table>
+        <thead><tr><th>公式名称</th><th>公式表达式</th><th>备注/衍生说明</th></tr></thead>
+        <tbody>
+            <tr><td>到期收益率法（税前债务）</td><td>\( P_0 = \sum_{t=1}^{n} \frac{I}{(1+r_d)^t} + \frac{M}{(1+r_d)^n} \)</td><td>内插法求\(r_d\)；若m次付息，先求计息期利率，有效年利率\((1+r_d')^m-1\)</td></tr>
+            <tr><td>风险调整法（税前债务）</td><td>\( r_d = r_{RF} + \text{信用风险补偿率} \)</td><td>信用风险补偿率 = 同信用级别债券到期收益率均值 - 同期政府债券到期收益率均值</td></tr>
+            <tr><td>税后债务成本</td><td>\( r_{d(税后)} = r_d \times (1 - T) \)</td><td>利息抵税效应，T为所得税税率</td></tr>
+            <tr><td>资本资产定价模型(CAPM)</td><td>\( r_s = r_{RF} + \beta (r_m - r_{RF}) \)</td><td>市场风险溢价常采用几何平均法，长期债券利率作无风险利率</td></tr>
+            <tr><td>股利增长模型（无发行费）</td><td>\( r_s = \frac{D_1}{P_0} + g \)</td><td>\(g\)可用历史几何平均\( \sqrt[n]{FV/PV}-1 \) 或 可持续增长率 \(g=ROE\times b\)</td></tr>
+            <tr><td>考虑发行费用的普通股成本</td><td>\( r_s = \frac{D_1}{P_0(1-F)} + g \)</td><td>留存收益成本为无发行费版本</td></tr>
+            <tr><td>债券收益率风险调整模型</td><td>\( r_s = r_{dt} + RP_c \)</td><td>\(RP_c\)通常取3%~5%</td></tr>
+            <tr><td>优先股资本成本（权益工具）</td><td>\( r_p = \frac{D_p}{P_p(1-F)} \)</td><td>已是税后成本，不可税前扣除</td></tr>
+            <tr><td>优先股资本成本（金融负债）★新增</td><td>税前\( r_p = \frac{D_p}{P_p(1-F)} \)；税后 = 税前 × (1-T)</td><td>2025关键新增，利息抵税后资本成本更低</td></tr>
+            <tr><td>永续债资本成本（金融负债）★新增</td><td>税前\( r_{pd} = \frac{I_{pd}}{P_{pd}(1-F)} \)；税后 = 税前 × (1-T)</td><td>同优先股逻辑，注意清偿顺序影响</td></tr>
+            <tr><td>加权平均资本成本(WACC)</td><td>\( WACC = w_d r_d(1-T) + w_p r_p + w_e r_s \)</td><td>权重可采用账面、市场价值或目标资本结构</td></tr>
+        </tbody>
+    </table>
+
+    <!-- 内插法及付息频率示例 -->
+    <h2>🔢 计算工具箱：内插法 & 有效年利率转换</h2>
+    <div class="note">
+        <strong>📐 内插法速算（债券资本成本）</strong><br>
+        若用\(r_1\)计算现值\(V_1\)，\(r_2\)计算现值\(V_2\)，目标现值\(P\)，则：
+        \[ r_d = r_1 + \frac{(r_2 - r_1) \times (V_1 - P)}{V_1 - V_2} \]
+        <br>
+        <strong>🔄 半年付息一次下的有效年利率</strong><br>
+        债券税前资本成本（有效年利率）\( = (1 + r_{period})^m - 1\)，其中\(r_{period}\)为每期到期收益率，m=2。
+    </div>
+
+    <!-- 学霸笔记片段 -->
+    <h2>🧠 学霸笔记 · 易错易混辨析</h2>
+    <ul>
+        <li>📌 资本成本是<strong>未来成本</strong>，现有债务历史成本是沉没成本，决策无关。</li>
+        <li>📌 <strong>β值</strong>需基于经营风险和财务风险稳定期数据；若风险特征剧变，应使用变化后期间数据。</li>
+        <li>📌 市场风险溢价：几何平均数法比算术平均数法更适合长期资本成本的估计（数值一般更低）。</li>
+        <li>📌 利用股利增长模型时，若题目给的是“本期已支付股利\(D_0\)”，则\(D_1 = D_0 \times (1+g)\)；若直接给出预期股利\(D_1\)则直接使用。</li>
+        <li>📌 <strong>新增混合筹资关键点</strong>：考试中若出现优先股或永续债，首先要判断题目中分类为“金融负债”还是“权益工具”，再套对应税前/税后公式。</li>
+    </ul>
+
+    <!-- 考纲能力对接 -->
+    <div class="tip">
+        📖 根据2025CPA《财务成本管理》考试大纲（二、长期投资决策），本章能力等级：债务资本成本估计（等级2/3）、普通股资本成本估计（等级2）、混合筹资资本成本估计（等级2）、加权平均资本成本计算（等级2）。与新增法规《永续债相关会计处理的规定》及企业所得税政策呼应。
+    </div>
+    <hr />
+    <footer>
+        ✅ 笔记依据：BT教育《21天突破注会·财务成本管理》第四章及2025年CPA考纲整合，所有公式均采用LaTeX规范，保证正确渲染。<br>
+        🧭 第一轮复习聚焦基础概念+公式推导+新增点专项突破。
+    </footer>
+</div>
+<div style="display: flex; justify-content: center; margin-top: 0.5rem;">
+    <button id="downloadMdBtn" class="btn-download">📥 下载为 Markdown 文件（公式保留文本表示）</button>
+</div>
+<script>
+    function extractMarkdown() {
+        // 生成纯文本+公式文本形式的markdown（便于离线保存，公式以LaTeX源码输出）
+        const container = document.getElementById('notesContent').cloneNode(true);
+        // 处理所有公式卡片中的MathJax渲染内容：提取原有LaTeX代码（手动提取不易，但可保留<div>中的原始文本）
+        // 为了保证md可读，将所有公式块中的内容转换成 $$ ... $$ 或 \(...\) 形式
+        container.querySelectorAll('.formula-card').forEach(card => {
+            let rawText = card.innerText;
+            // 简单将公式包围转为块级
+            card.outerHTML = `\n\`\`\`math\n${rawText}\n\`\`\`\n`;
+        });
+        // 处理note tip
+        container.querySelectorAll('.note, .tip').forEach(el => {
+            let prefix = el.classList.contains('note') ? '📘 笔记：' : '💡 小贴士：';
+            let content = el.innerText;
+            el.outerHTML = `\n> ${prefix} ${content}\n\n`;
+        });
+        // 表格保留html在md中也能正常（多数支持）
+        let finalHtml = container.innerHTML;
+        let markdown = `# 第四章 资本成本 · 第一轮知识笔记（CPA财管）\n\n> 基于BT教材+2025考纲，包含债务/权益/混合筹资及加权平均资本成本，新增优先股永续债金融负债分类公式。\n\n${finalHtml}\n\n---\n*注：本笔记公式采用LaTeX表示，可在支持MathJax的环境中渲染。*`;
+        return markdown;
+    }
+
+    document.getElementById('downloadMdBtn').addEventListener('click', () => {
+        const mdContent = extractMarkdown();
+        const blob = new Blob([mdContent], { type: 'text/markdown' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = '资本成本_第一轮知识笔记.md';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+</script>
+</body>
+</html>

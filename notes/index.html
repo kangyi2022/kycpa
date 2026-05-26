@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>学习笔记目录</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f5f7fa;
+            padding: 20px;
+            color: #1a1a2e;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* 头部 */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 25px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        /* 搜索框 */
+        .search-box {
+            margin-bottom: 20px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 14px 18px;
+            font-size: 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 50px;
+            background: white;
+            outline: none;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .search-box input:focus {
+            border-color: #667eea;
+            box-shadow: 0 2px 12px rgba(102,126,234,0.2);
+        }
+
+        /* 分类卡片 */
+        .category {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .category-header {
+            background: #f8f9fc;
+            padding: 16px 20px;
+            border-bottom: 2px solid #eef2f7;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+
+        .category-header:hover {
+            background: #f0f2f5;
+        }
+
+        .category-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-title .emoji {
+            font-size: 1.5rem;
+        }
+
+        .toggle-icon {
+            font-size: 1.2rem;
+            color: #888;
+            transition: transform 0.3s;
+        }
+
+        .category-header.collapsed .toggle-icon {
+            transform: rotate(-90deg);
+        }
+
+        /* 文件列表 */
+        .file-list {
+            list-style: none;
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+
+        .file-list.collapsed {
+            display: none;
+        }
+
+        .file-list li {
+            border-bottom: 1px solid #eee;
+        }
+
+        .file-list li:last-child {
+            border-bottom: none;
+        }
+
+        .file-list a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            text-decoration: none;
+            color: #333;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+
+        .file-list a:hover {
+            background: #f5f3ff;
+            padding-left: 26px;
+        }
+
+        .file-list .file-icon {
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+
+        .file-list .file-name {
+            flex: 1;
+        }
+
+        .file-list .badge {
+            font-size: 0.7rem;
+            color: #888;
+            background: #f0f0f0;
+            padding: 2px 8px;
+            border-radius: 20px;
+        }
+
+        /* 空状态 */
+        .empty-message {
+            padding: 20px;
+            text-align: center;
+            color: #999;
+            font-style: italic;
+        }
+
+        /* 底部统计 */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            font-size: 0.8rem;
+        }
+
+        /* 手机适配 */
+        @media (max-width: 600px) {
+            body {
+                padding: 12px;
+            }
+            .header {
+                padding: 20px;
+            }
+            .header h1 {
+                font-size: 1.4rem;
+            }
+            .category-title {
+                font-size: 1.1rem;
+            }
+            .file-list a {
+                padding: 12px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>📚 CPA学习笔记库</h1>
+        <p>CPA 备考 · 点击任意笔记开始阅读</p>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="🔍 搜索笔记标题... (输入01、02或关键字)">
+    </div>
+
+    <div id="categoriesContainer"></div>
+    <div class="footer" id="footer"></div>
+</div>
+
+<script>
+    // ============================================================
+    // 🔧 配置区域：按你的文件夹结构修改这里！
+    // ============================================================
+    const categories = [
+        {
+            name: "财管",
+            emoji: "📊",
+            files: [
+                "01.html",
+                "02.html",
+                "03.html",
+                "04 资本成本.html",
+                "05 投资项目资本预算.html"
+            ]
+        },
+        {
+            name: "经济法",
+            emoji: "⚖️",
+            files: [
+                "01.html",
+                "02.html",
+                "03.html",
+                "04.html"
+            ]
+        },
+        {
+            name: "会计",
+            emoji: "📑",
+            files: [
+                "01.html",
+                "02.html",
+                "03.html",
+                "04.html",
+                "05.html",
+                "06.html"
+            ]
+        },
+        {
+            name: "战略",
+            emoji: "🎯",
+            files: [
+                "01.html",
+                "02.html",
+                "03.html"
+            ]
+        }
+    ];
+
+    // ============================================================
+    // 以下代码自动生成目录，一般不需要修改
+    // ============================================================
+
+    function renderCategories(filterText = "") {
+        const container = document.getElementById("categoriesContainer");
+        container.innerHTML = "";
+        
+        let totalCount = 0;
+        
+        categories.forEach((cat, catIndex) => {
+            // 过滤文件
+            let filteredFiles = cat.files;
+            let hasMatch = false;
+            
+            if (filterText.trim() !== "") {
+                filteredFiles = cat.files.filter(file => {
+                    const fileName = file.replace(".html", "");
+                    return fileName.toLowerCase().includes(filterText.toLowerCase());
+                });
+                hasMatch = filteredFiles.length > 0;
+                if (!hasMatch) return; // 无匹配则跳过整个分类
+            }
+            
+            totalCount += filteredFiles.length;
+            
+            // 创建分类容器
+            const categoryDiv = document.createElement("div");
+            categoryDiv.className = "category";
+            
+            // 分类头部（可点击折叠）
+            const headerDiv = document.createElement("div");
+            headerDiv.className = "category-header";
+            headerDiv.setAttribute("data-cat-index", catIndex);
+            
+            const titleSpan = document.createElement("span");
+            titleSpan.className = "category-title";
+            titleSpan.innerHTML = `<span class="emoji">${cat.emoji}</span> ${cat.name} <span style="font-size:0.8rem; color:#888;">(${filteredFiles.length})</span>`;
+            
+            const toggleSpan = document.createElement("span");
+            toggleSpan.className = "toggle-icon";
+            toggleSpan.textContent = "▼";
+            
+            headerDiv.appendChild(titleSpan);
+            headerDiv.appendChild(toggleSpan);
+            
+            // 文件列表
+            const fileUl = document.createElement("ul");
+            fileUl.className = "file-list";
+            
+            filteredFiles.forEach(file => {
+                const li = document.createElement("li");
+                const a = document.createElement("a");
+                const fileBase = file.replace(".html", "");
+                // 路径：分类文件夹/文件名
+                a.href = `${cat.name}/${file}`;
+                a.innerHTML = `
+                    <span class="file-icon">📄</span>
+                    <span class="file-name">${fileBase}</span>
+                    <span class="badge">${cat.name}</span>
+                `;
+                li.appendChild(a);
+                fileUl.appendChild(li);
+            });
+            
+            categoryDiv.appendChild(headerDiv);
+            categoryDiv.appendChild(fileUl);
+            container.appendChild(categoryDiv);
+            
+            // 读取本地存储的折叠状态
+            const savedState = localStorage.getItem(`cat_collapsed_${catIndex}`);
+            if (savedState === "true") {
+                headerDiv.classList.add("collapsed");
+                fileUl.classList.add("collapsed");
+            }
+            
+            // 绑定折叠事件
+            headerDiv.addEventListener("click", (e) => {
+                e.stopPropagation();
+                const isCollapsed = headerDiv.classList.toggle("collapsed");
+                fileUl.classList.toggle("collapsed");
+                localStorage.setItem(`cat_collapsed_${catIndex}`, isCollapsed);
+            });
+        });
+        
+        // 更新底部统计
+        const footer = document.getElementById("footer");
+        footer.innerHTML = `📖 共 ${totalCount} 条笔记 · 点击分类标题可折叠/展开`;
+        
+        if (filterText.trim() !== "" && totalCount === 0) {
+            container.innerHTML = '<div class="empty-message">😢 没有找到匹配的笔记，试试其他关键词~</div>';
+            footer.innerHTML = `🔍 未找到结果 · 已清空筛选`;
+        }
+    }
+    
+    // 搜索功能
+    const searchInput = document.getElementById("searchInput");
+    let searchTimeout;
+    searchInput.addEventListener("input", function() {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            renderCategories(this.value);
+        }, 200);
+    });
+    
+    // 初始化渲染
+    renderCategories();
+</script>
+</body>
+</html>
