@@ -23,7 +23,6 @@
             margin: 0 auto;
         }
 
-        /* 头部 */
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -43,7 +42,6 @@
             font-size: 0.9rem;
         }
 
-        /* 搜索框 */
         .search-box {
             margin-bottom: 20px;
         }
@@ -65,7 +63,6 @@
             box-shadow: 0 2px 12px rgba(102,126,234,0.2);
         }
 
-        /* 分类卡片 */
         .category {
             background: white;
             border-radius: 16px;
@@ -111,7 +108,6 @@
             transform: rotate(-90deg);
         }
 
-        /* 文件列表 */
         .file-list {
             list-style: none;
             transition: all 0.3s;
@@ -163,7 +159,6 @@
             border-radius: 20px;
         }
 
-        /* 空状态 */
         .empty-message {
             padding: 20px;
             text-align: center;
@@ -171,7 +166,6 @@
             font-style: italic;
         }
 
-        /* 底部统计 */
         .footer {
             text-align: center;
             padding: 20px;
@@ -179,7 +173,6 @@
             font-size: 0.8rem;
         }
 
-        /* 手机适配 */
         @media (max-width: 600px) {
             body {
                 padding: 12px;
@@ -215,9 +208,6 @@
 </div>
 
 <script>
-    // ============================================================
-    // 🔧 配置区域：按你的文件夹结构修改这里！
-    // ============================================================
     const categories = [
         {
             name: "财管",
@@ -264,14 +254,10 @@
                 "notes/战略/06.html",                
                 "notes/战略/07.html",
                 "notes/战略/08 企业面对的主要风险与应对.html",
-                "notes/战略/09.html",
+                "notes/战略/09.html"
             ]
         }
     ];
-
-    // ============================================================
-    // 以下代码自动生成目录，一般不需要修改
-    // ============================================================
 
     function renderCategories(filterText = "") {
         const container = document.getElementById("categoriesContainer");
@@ -280,26 +266,21 @@
         let totalCount = 0;
         
         categories.forEach((cat, catIndex) => {
-            // 过滤文件
             let filteredFiles = cat.files;
-            let hasMatch = false;
             
             if (filterText.trim() !== "") {
                 filteredFiles = cat.files.filter(file => {
-                    const fileName = file.replace(".html", "");
+                    const fileName = file.replace(/^.*\//, "").replace(".html", "");
                     return fileName.toLowerCase().includes(filterText.toLowerCase());
                 });
-                hasMatch = filteredFiles.length > 0;
-                if (!hasMatch) return; // 无匹配则跳过整个分类
+                if (filteredFiles.length === 0) return;
             }
             
             totalCount += filteredFiles.length;
             
-            // 创建分类容器
             const categoryDiv = document.createElement("div");
             categoryDiv.className = "category";
             
-            // 分类头部（可点击折叠）
             const headerDiv = document.createElement("div");
             headerDiv.className = "category-header";
             headerDiv.setAttribute("data-cat-index", catIndex);
@@ -315,19 +296,19 @@
             headerDiv.appendChild(titleSpan);
             headerDiv.appendChild(toggleSpan);
             
-            // 文件列表
             const fileUl = document.createElement("ul");
             fileUl.className = "file-list";
             
             filteredFiles.forEach(file => {
                 const li = document.createElement("li");
                 const a = document.createElement("a");
-                const fileBase = file.replace(".html", "");
-                // 路径：分类文件夹/文件名
-                a.href = `${cat.name}/${file}`;
+                // 从完整路径中提取文件名用于显示
+                const displayName = file.replace(/^.*\//, "").replace(".html", "");
+                // ✅ 关键修复：直接使用完整路径，不要添加 cat.name
+                a.href = file;
                 a.innerHTML = `
                     <span class="file-icon">📄</span>
-                    <span class="file-name">${fileBase}</span>
+                    <span class="file-name">${displayName}</span>
                     <span class="badge">${cat.name}</span>
                 `;
                 li.appendChild(a);
@@ -338,14 +319,12 @@
             categoryDiv.appendChild(fileUl);
             container.appendChild(categoryDiv);
             
-            // 读取本地存储的折叠状态
             const savedState = localStorage.getItem(`cat_collapsed_${catIndex}`);
             if (savedState === "true") {
                 headerDiv.classList.add("collapsed");
                 fileUl.classList.add("collapsed");
             }
             
-            // 绑定折叠事件
             headerDiv.addEventListener("click", (e) => {
                 e.stopPropagation();
                 const isCollapsed = headerDiv.classList.toggle("collapsed");
@@ -354,7 +333,6 @@
             });
         });
         
-        // 更新底部统计
         const footer = document.getElementById("footer");
         footer.innerHTML = `📖 共 ${totalCount} 条笔记 · 点击分类标题可折叠/展开`;
         
@@ -364,7 +342,6 @@
         }
     }
     
-    // 搜索功能
     const searchInput = document.getElementById("searchInput");
     let searchTimeout;
     searchInput.addEventListener("input", function() {
@@ -374,7 +351,6 @@
         }, 200);
     });
     
-    // 初始化渲染
     renderCategories();
 </script>
 </body>
